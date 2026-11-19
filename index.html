@@ -590,8 +590,14 @@ footer .verse{font-family:var(--mono);font-size:12px}
   <script>
     // All editable values live here. Update this object, then redeploy.
     const STATUS = {
-      updated: "Nov 19, 2026, 9:08 AM ET",
-      confirmed: 97,
+      updated: "Nov 19, 2026, 9:50 AM ET",
+      confirmed: 99,
+      // Wall-clock progress: starts at anchorPercent at anchorTime (ISO, ET offset)
+      // and climbs linearly to 100% at anchorTime + 60 minutes, then reveals.
+      // display = anchor + (100 - anchor) * (elapsedMs / 3600000), capped at 100.
+      // Times below are set at deploy.
+      anchorPercent: 99,
+      anchorTime: "2026-11-19T09:50:00-05:00",
       nextMilestone: 100,
       preview: "Thursday, Nov 19, morning",
       pages: [
@@ -628,9 +634,22 @@ footer .verse{font-family:var(--mono);font-size:12px}
       ]
     };
 
-    // Reveal: at 100% the progress page becomes Zach's page. ?reveal=1 previews it early.
+    // Reveal: at 100% (anchorTime + 60 min) the progress page becomes Zach's page.
+    // ?reveal=1 previews it early (with a preview strip, only if 100% has not been reached yet).
     const REVEAL_PREVIEW = new URLSearchParams(location.search).get("reveal") === "1";
-    const REVEAL = STATUS.confirmed >= 100 || REVEAL_PREVIEW;
+    const CEILING = 100;
+    const REVEAL_AFTER_MS = 60 * 60 * 1000;
+
+    function wallClockPercent(now) {
+      const anchorMs = Date.parse(STATUS.anchorTime);
+      const elapsed = now - anchorMs;
+      if (elapsed <= 0) return STATUS.anchorPercent;
+      const raw = STATUS.anchorPercent + (100 - STATUS.anchorPercent) * (elapsed / REVEAL_AFTER_MS);
+      return Math.min(raw, CEILING);
+    }
+
+    const reached100 = wallClockPercent(Date.now()) >= 100;
+    const REVEAL = reached100 || REVEAL_PREVIEW;
 
     if (!REVEAL) {
 
@@ -690,19 +709,9 @@ footer .verse{font-family:var(--mono);font-size:12px}
     });
 
     const activeDot = document.querySelector(".dot.is-active");
-    const CEILING = 99; // auto-ticks must never reach 100 (that triggers Zach's reveal)
-    const STORE_KEY = "wmi-progress-pct";
-    let pct = STATUS.confirmed;
-    try {
-      const stored = parseFloat(localStorage.getItem(STORE_KEY));
-      if (Number.isFinite(stored) && stored > pct) pct = stored;
-    } catch (e) {}
-    pct = Math.min(Math.max(pct, STATUS.confirmed), CEILING);
-    let t = 0;
 
-    function savePct() {
-      try { localStorage.setItem(STORE_KEY, String(pct)); } catch (e) {}
-    }
+    let pct = wallClockPercent(Date.now());
+    let t = 0;
 
     function render() {
       const glow = 10 + 8 * Math.sin(t / 6);
@@ -719,14 +728,13 @@ footer .verse{font-family:var(--mono);font-size:12px}
     }
 
     render();
-    savePct();
-    setInterval(() => {
+    const tick = setInterval(() => {
       t += 1;
-      const target = Math.min(STATUS.nextMilestone - 0.5, CEILING);
-      const gap = target - pct;
-      if (gap > 0) {
-        pct = Math.min(pct + Math.max(gap * 0.0004, 0.00031), target);
-        savePct();
+      pct = wallClockPercent(Date.now());
+      if (pct >= 100) {
+        clearInterval(tick);
+        showZachPage();
+        return;
       }
       render();
     }, 120);
@@ -745,9 +753,9 @@ footer .verse{font-family:var(--mono);font-size:12px}
       document.querySelector("body > .wrap").remove();
       document.body.insertBefore(tpl.content.cloneNode(true), tpl);
       document.documentElement.classList.remove("reveal-pending");
-      if (REVEAL_PREVIEW && STATUS.confirmed < 100) {
+      if (REVEAL_PREVIEW && !reached100) {
         const note = document.getElementById("pmode");
-        note.textContent = "Preview mode · Zach sees this page when the progress bar reaches 100% (now " + STATUS.confirmed + "%)";
+        note.textContent = "Preview mode · Zach sees this page when the progress bar reaches 100% (now " + wallClockPercent(Date.now()).toFixed(2) + "%)";
         note.hidden = false;
       }
       initZach();
