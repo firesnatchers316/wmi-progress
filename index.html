@@ -407,7 +407,7 @@ footer .verse{font-family:var(--mono);font-size:12px}
 <header>
   <div class="wrap">
     <a class="brand" href="#top"><img src="zach/logo-icon.svg" alt="" width="34" height="34">WMI</a>
-    <div class="pw">Prepared for Zach & Anna<br>with <b>SuperWho</b></div>
+    <div class="pw">Prepared for Zach and Anna<br>with <b>SuperWho</b></div>
   </div>
 </header>
 
@@ -795,7 +795,7 @@ async function submit(payload, echoHtml, btn){
     showErr("That didn't go through (" + e.message + "). Please try again, or drop it in the Drive folder below.");
   } finally { btn.disabled = false; btn.textContent = label; }
 }
-const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&','<':'<','>':'>','"':'"'}[c]));
+const esc = s => { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }; // no literal entities: the deploy tool decodes them
 const fmt = s => Math.floor(s/60) + ':' + String(Math.floor(s%60)).padStart(2,'0');
 
 $('again').addEventListener('click', () => { $('thanks').classList.remove('show'); $('form').style.display=''; $('demoNote').hidden=true; });
