@@ -551,7 +551,8 @@ footer .verse{font-family:var(--mono);font-size:12px}
         <p class="eb">Got it</p>
         <h2 style="font-size:28px">Thank you, Zach.</h2>
         <div class="echo" id="echo"></div>
-        <p style="color:var(--body)">It's saved for Jim. Jim will send you a short summary of what you said and the next steps.<span id="changesLine"> You'll see the changes on the site by <strong id="changesBy"></strong>.</span></p>
+        <p class="hint" id="receipt" hidden></p>
+        <p style="color:var(--body)">It's saved for Jim. Jim will send you a written summary within 24 hours.<span id="changesLine"> You'll see the changes on the site by <strong id="changesBy"></strong>.</span></p>
         <p class="hint" id="demoNote" hidden>Draft mode: nothing was actually sent, because the Apps Script URL isn't set yet.</p>
         <button class="btn btn-o" id="again" type="button">Add something else</button>
       </div>
@@ -800,17 +801,22 @@ async function submit(payload, echoHtml, btn){
     key: SHARED_KEY, from: 'Zach', question: $('theQuestion').textContent.trim(),
     page: location.href, sentAt: new Date().toISOString(), userAgent: navigator.userAgent
   }, payload);
+  let j = {};
   try {
     if (!DEMO) {
       // text/plain keeps this a "simple" request, so Apps Script doesn't need a CORS preflight
       const r = await fetch(APPS_SCRIPT_URL, { method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(payload) });
-      const j = await r.json().catch(() => ({}));
+      j = await r.json().catch(() => ({}));
       if (!r.ok || !j.ok) throw new Error(j.error || ('HTTP '+r.status));
     } else {
       await new Promise(r => setTimeout(r, 600));
       $('demoNote').hidden = false;
     }
     $('echo').innerHTML = echoHtml;
+    const rc = $('receipt'), parts = [];
+    if (j && j.receivedAt) parts.push('Received at ' + j.receivedAt);
+    if (j && j.receipt) parts.push('Receipt #' + j.receipt);
+    rc.textContent = parts.join(' · '); rc.hidden = !parts.length;
     $('form').style.display = 'none';
     $('thanks').classList.add('show');
     $('thanks').focus();
@@ -886,7 +892,7 @@ $('sendVoice').addEventListener('click', async () => {
   const ext = /mp4/.test(voiceBlob.type) ? 'm4a' : /ogg/.test(voiceBlob.type) ? 'ogg' : 'webm';
   const data = await blobToB64(voiceBlob);
   submit({ kind:'voice', filename:'zach-voice-note.' + ext, mimeType:voiceBlob.type, durationSec:Math.round(voiceSecs), data },
-    '<span class="lbl">Received</span>Your voice note (' + fmt(voiceSecs) + '). Jim will get a written summary of it.', $('sendVoice'));
+    '<span class="lbl">Received</span>Your voice note (' + fmt(voiceSecs) + ').', $('sendVoice'));
 });
     }
   </script>
