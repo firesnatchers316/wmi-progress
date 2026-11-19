@@ -374,11 +374,11 @@ footer .verse{font-family:var(--mono);font-size:12px}
     <div class="card">
       <div class="overall-row">
         <span class="overall-label">Overall</span>
-        <span class="pct" id="pct">42.00000%</span>
+        <span class="pct" id="pct">97.00000%</span>
       </div>
       <div class="bar-wrap" id="barWrap">
         <div class="bar-track">
-          <div class="bar-fill" id="barFill"></div>
+          <div class="bar-fill" id="barFill" style="width:97%"></div>
         </div>
       </div>
       <div class="preview">Preview ready: <strong id="preview"></strong></div>
@@ -590,9 +590,9 @@ footer .verse{font-family:var(--mono);font-size:12px}
   <script>
     // All editable values live here. Update this object, then redeploy.
     const STATUS = {
-      updated: "Nov 19, 2026, 4:40 AM ET",
-      confirmed: 87,
-      nextMilestone: 90,
+      updated: "Nov 19, 2026, 9:08 AM ET",
+      confirmed: 97,
+      nextMilestone: 100,
       preview: "Thursday, Nov 19, morning",
       pages: [
         { name: "Home", status: "done" },
@@ -690,8 +690,19 @@ footer .verse{font-family:var(--mono);font-size:12px}
     });
 
     const activeDot = document.querySelector(".dot.is-active");
+    const CEILING = 99; // auto-ticks must never reach 100 (that triggers Zach's reveal)
+    const STORE_KEY = "wmi-progress-pct";
     let pct = STATUS.confirmed;
+    try {
+      const stored = parseFloat(localStorage.getItem(STORE_KEY));
+      if (Number.isFinite(stored) && stored > pct) pct = stored;
+    } catch (e) {}
+    pct = Math.min(Math.max(pct, STATUS.confirmed), CEILING);
     let t = 0;
+
+    function savePct() {
+      try { localStorage.setItem(STORE_KEY, String(pct)); } catch (e) {}
+    }
 
     function render() {
       const glow = 10 + 8 * Math.sin(t / 6);
@@ -708,10 +719,15 @@ footer .verse{font-family:var(--mono);font-size:12px}
     }
 
     render();
+    savePct();
     setInterval(() => {
       t += 1;
-      const gap = STATUS.nextMilestone - 0.5 - pct;
-      if (gap > 0) pct += Math.max(gap * 0.0004, 0.00031);
+      const target = Math.min(STATUS.nextMilestone - 0.5, CEILING);
+      const gap = target - pct;
+      if (gap > 0) {
+        pct = Math.min(pct + Math.max(gap * 0.0004, 0.00031), target);
+        savePct();
+      }
       render();
     }, 120);
     } else {
