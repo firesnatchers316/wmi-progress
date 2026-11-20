@@ -500,6 +500,32 @@ footer .verse{font-family:var(--mono);font-size:12px}
   .upd .hb h2{font-size:30px}
 }
 @media (prefers-reduced-motion:reduce){.wp-livedot,.wp-dot.pulse,.wp-barwrap,.wp-mini.run i,.upd .hb{animation:none}.wp-fill,.wp-mini i{transition:none}}
+/* what SuperWho did (Nov 20) */
+.goals{display:grid;gap:12px;margin-top:20px}
+.goal{background:#fff;border-left:3px solid var(--blue);padding:16px 18px;border-radius:2px}
+.goal blockquote{margin:0 0 6px;font-size:20px;line-height:1.35;font-weight:600;letter-spacing:-.01em}
+.goal cite{display:block;font:400 12px/1.4 var(--mono);color:var(--hint);font-style:normal;margin-bottom:8px}
+.goal p{margin:0;color:var(--body);font-size:16px}
+.goal.pain{border-left-color:#B3261E}
+.goal.pain blockquote{font-size:18px}
+.did-h{margin:40px 0 14px;font-size:22px}
+.did-p{color:var(--body);font-size:16px;margin:0}
+.ba{display:grid;gap:10px}
+.ba-head{display:none}
+.ba-row{background:#fff;border:1px solid var(--rule);border-radius:6px;padding:14px 16px;display:grid;gap:8px}
+.ba-t{font-weight:700;font-size:17px;line-height:1.3}
+.ba-old{color:var(--hint);font-size:15px;line-height:1.45}
+.ba-new{color:var(--ink);font-size:15px;line-height:1.45;background:var(--light);border-radius:4px;padding:9px 11px}
+.ba .lab{display:block;font:500 11px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px;color:var(--hint)}
+.ba-new .lab{color:var(--blue)}
+@media (min-width:860px){
+  .goals{grid-template-columns:1.4fr 1fr;align-items:stretch}
+  .ba-head{display:grid;grid-template-columns:.9fr 1.1fr 1.8fr;gap:18px;padding:0 16px;font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--hint)}
+  .ba-head span:last-child{color:var(--blue)}
+  .ba-row{grid-template-columns:.9fr 1.1fr 1.8fr;gap:18px;align-items:start}
+  .ba .lab{display:none}
+}
+.sw{text-transform:none;font-variant:small-caps;letter-spacing:.02em}
 .pmode{background:var(--light);color:var(--blue);font:500 12px/1.4 var(--mono);text-align:center;padding:8px 12px;letter-spacing:.04em}
   </style>
 </head>
@@ -548,7 +574,7 @@ footer .verse{font-family:var(--mono);font-size:12px}
 <header>
   <div class="wrap">
     <a class="brand" href="#top"><img src="zach/logo-icon.svg" alt="" width="34" height="34">WMI</a>
-    <div class="pw">Prepared for Zach and Anna<br>with <b>SuperWho</b></div>
+    <div class="pw">Prepared for Zach and Anna<br>with <b><span class="sw">SuperWho</span></b></div>
   </div>
 </header>
 
@@ -643,151 +669,70 @@ footer .verse{font-family:var(--mono);font-size:12px}
 
 <button class="fab off" id="fab" type="button" aria-label="Message us"><span aria-hidden="true">💬</span>Message us</button>
 
-<!-- 2 · WHAT WE HEARD -->
-<section class="wash" id="heard">
+<!-- 2 · What SuperWho just did for you -->
+<section class="wash did" id="did">
   <div class="wrap">
-    <p class="eb">In your own words</p>
-    <h2>What you told us mattered most</h2>
-    <ul class="heard-list">
-      <li class="q">
-        <blockquote>“Reach, equip, and multiply… reach, not just teach, but equip, not just give information, but actually equip them, and then multiply.”</blockquote>
-        <p class="why">So the home page leads with all three pillars, not just the training.</p>
-        <cite>Your voice memo 1 · Oct 27</cite>
-      </li>
-      <li class="q">
-        <blockquote>“It's actually somebody that lives on mission.”</blockquote>
-        <p class="why">That's how the site describes a missionary.</p>
-        <cite>Your voice memo 1 · Oct 27</cite>
-      </li>
-      <li class="q">
-        <blockquote>“I wanna be completely honest in everything that we're describing.”</blockquote>
-        <p class="why">So we took the partner names off, say “12+ nations,” and promise to reply “as soon as possible.”</p>
-        <cite>Your voice memo 1 · Oct 27</cite>
-      </li>
-      <li class="q">
-        <blockquote>“This is not a little prayer group, but this is actually like a really big vision that we're going towards.”</blockquote>
-        <p class="why">So Pray has its own page and its own way to sign up.</p>
-        <cite>Your voice memo 2 · Oct 27</cite>
-      </li>
-    </ul>
-    <p class="built">We built the site around that.</p>
-  </div>
-</section>
-
-<!-- 3 · PREVIEW -->
-<section id="preview">
-  <div class="wrap">
-    <p class="eb">Your new site</p>
-    <h2>Have a look, the way a visitor would</h2>
-    <p class="lead" style="margin-top:14px">It works best on your phone. Take your time. There's no wrong feedback.</p>
-
-    <div class="shots" role="list" aria-label="Screens from the new site">
-      <figure class="shot" role="listitem"><img src="zach/mobile-home.svg" alt="Home page on a phone: Carrying the Gospel to the nations, with the local church." loading="lazy"><figcaption>Home</figcaption></figure>
-      <figure class="shot" role="listitem"><img src="zach/mobile-about.svg" alt="About page on a phone: Zachary and Anna's story." loading="lazy"><figcaption>About · your story</figcaption></figure>
-      <figure class="shot" role="listitem"><img src="zach/mobile-global-work.svg" alt="Global Work page on a phone: People reached, equipped and sent." loading="lazy"><figcaption>Global Work</figcaption></figure>
-      <figure class="shot" role="listitem"><img src="zach/mobile-give.svg" alt="Give page on a phone: Give to the mission." loading="lazy"><figcaption>Give</figcaption></figure>
+    <p class="eb">What <span class="sw">SuperWho</span> just did for you</p>
+    <h2>Your goal, in your words</h2>
+    <div class="goals">
+      <div class="goal">
+        <blockquote>“Right where they land on the first page, literally the first spot they see on their phone, is what we do.”</blockquote>
+        <cite>Your voice memo · Nov 19</cite>
+        <p>So a visitor, like the pastor in Ethiopia, gets what WMI does and how to invite you, give or pray, without hunting for it.</p>
+      </div>
+      <div class="goal pain">
+        <blockquote>“There's some information that possibly was lost from the last voice memos.”</blockquote>
+        <cite>Your voice memo · Nov 19</cite>
+        <p>The worry: what you say getting lost along the way.</p>
+      </div>
     </div>
-    <figure class="desk"><img src="zach/desktop-home-hero.svg" alt="Home page on a computer" loading="lazy"></figure>
 
+    <h3 class="did-h">How we got there, and how fast</h3>
+    <div class="ba">
+      <div class="ba-head" aria-hidden="true"><span></span><span>The usual way</span><span>What happened here</span></div>
+      <div class="ba-row">
+        <div class="ba-t">Telling us what you want</div>
+        <div class="ba-old"><span class="lab">The usual way</span>Write a brief, fill out forms, then explain it all again on calls.</div>
+        <div class="ba-new"><span class="lab">What happened here</span>One call and one voice memo. You didn't write a brief, fill out forms or chase anyone.</div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-t">Nothing gets lost</div>
+        <div class="ba-old"><span class="lab">The usual way</span>Rounds of email feedback, and you keep track of the changes yourself.</div>
+        <div class="ba-new"><span class="lab">What happened here</span>Nov 19, 12:10 PM ET: your one voice memo became 10 clear points. Each one has a live status at the top of this page.</div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-t">A site that says what you do</div>
+        <div class="ba-old"><span class="lab">The usual way</span>Start over, get quotes, wait on a designer. Often weeks.</div>
+        <div class="ba-new"><span class="lab">What happened here</span>Nov 18: we cleaned up your existing Wix site instead of starting over. The phone layout of all 10 Home sections was placed in about 3 hours, and this progress page went live that day. Nov 19, about 10:50 AM ET: the site went live for review.</div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-t">Fixing what you flagged</div>
+        <div class="ba-old"><span class="lab">The usual way</span>Wait for the next round of changes, then check them yourself.</div>
+        <div class="ba-new"><span class="lab">What happened here</span>Nov 19, the day of your memo: the big gaps between sections and the footer email were fixed. Nov 20: the Home buttons were linked, the stray dots on Global Work were cleared, and at 2:24 PM ET the repeated “Find your place” block was removed.</div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-t">Looks like what you approved</div>
+        <div class="ba-old"><span class="lab">The usual way</span>A new look you have to review and approve all over again.</div>
+        <div class="ba-new"><span class="lab">What happened here</span>Built to match the design you had already approved: the fonts, colors and layout.</div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-t">Your next word</div>
+        <div class="ba-old"><span class="lab">The usual way</span>Another email thread.</div>
+        <div class="ba-new"><span class="lab">What happened here</span>Talk, type or upload in the card above. It reaches the team instantly.</div>
+      </div>
+    </div>
+
+    <h3 class="did-h">See it the way a visitor would</h3>
+    <p class="did-p">The first screen on a phone, as it is on the live site now. Point 10, the sliding photo carousel, is how the first screen will show what you do even faster.</p>
+    <div class="shots" role="list" aria-label="Screens from the live site">
+      <figure class="shot" role="listitem"><img src="zach/site/m-home.svg" alt="Home page on a phone: Carrying the Gospel to the nations, with the local church." loading="lazy"><figcaption>Home</figcaption></figure>
+      <figure class="shot" role="listitem"><img src="zach/site/m-invite.svg" alt="Invite WMI page on a phone." loading="lazy"><figcaption>Invite WMI</figcaption></figure>
+      <figure class="shot" role="listitem"><img src="zach/site/m-give.svg" alt="Give page on a phone: Give to the mission." loading="lazy"><figcaption>Give</figcaption></figure>
+      <figure class="shot" role="listitem"><img src="zach/site/m-about.svg" alt="About page on a phone: Zachary and Anna's story." loading="lazy"><figcaption>About · your story</figcaption></figure>
+    </div>
+    <figure class="desk"><img src="zach/site/d-home.svg" alt="Home page on a computer, with the WMI logo and menu" loading="lazy"></figure>
     <div class="preview-cta">
-      <a class="btn" id="previewBtn" href="https://www.worldmissioninitiative.com/" target="_blank" rel="noopener">Open the preview →</a>
-    </div>
-
-    <ul class="changed" aria-label="Changes made from your memos">
-      <li>Reach · Equip · Multiply on the home page</li>
-      <li>“12+ nations,” not a fixed number</li>
-      <li>Partner names removed until agreements are signed</li>
-      <li>No promised reply time: “as soon as possible”</li>
-      <li>Clear paths to invite, give, pray and join the newsletter</li>
-      <li>One photo style across the site on phones</li>
-    </ul>
-  </div>
-</section>
-
-<!-- 4 · ONE QUESTION + 5 · REPLY -->
-<section class="navy" id="reply">
-  <div class="wrap q-grid">
-    <div>
-      <p class="eb">One question</p>
-      <p class="question" id="theQuestion">If a pastor in Ethiopia opened this site on his phone tomorrow, would he understand in one scroll that you <em>reach, equip and multiply</em>, and know exactly how to invite you?</p>
-      <p class="lead">What's missing, or what feels off? Answer whichever way is easiest for you.</p>
-    </div>
-
-    <div>
-      <div id="form">
-        <div class="tabs" role="tablist" aria-label="How would you like to answer?">
-          <button class="tab" role="tab" id="t-talk" aria-controls="p-talk" aria-selected="true"><span class="ic" aria-hidden="true">🎙</span>Talk</button>
-          <button class="tab" role="tab" id="t-type" aria-controls="p-type" aria-selected="false"><span class="ic" aria-hidden="true">⌨️</span>Type</button>
-          <button class="tab" role="tab" id="t-upload" aria-controls="p-upload" aria-selected="false"><span class="ic" aria-hidden="true">📎</span>Upload</button>
-        </div>
-
-        <!-- TALK -->
-        <div class="panel" role="tabpanel" id="p-talk" aria-labelledby="t-talk" style="color:var(--ink)">
-          <div class="rec">
-            <button class="recbtn" id="recBtn" type="button" aria-live="polite">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2Z"/></svg>
-              <span id="recLabel">Tap to talk</span>
-            </button>
-            <div class="timer" id="timer" aria-live="off"></div>
-            <audio id="playback" controls hidden></audio>
-            <p class="hint" id="recHint" style="margin:0">Talk as long as you like. Tap again to stop, listen back, then send.</p>
-          </div>
-          <div class="row" id="recActions" hidden>
-            <button class="btn btn-o" id="redo" type="button">Re-record</button>
-            <button class="btn" id="sendVoice" type="button">Send voice note</button>
-          </div>
-        </div>
-
-        <!-- TYPE -->
-        <div class="panel" role="tabpanel" id="p-type" aria-labelledby="t-type" hidden style="color:var(--ink)">
-          <label class="sr" for="msg">Your answer</label>
-          <textarea id="msg" placeholder="Type here, or tap the 🎤 on your phone's keyboard and just talk."></textarea>
-          <p class="hint">Tip: on iPhone or Android, the microphone on your keyboard turns your voice into text.</p>
-          <div class="row"><button class="btn" id="sendText" type="button">Send</button></div>
-        </div>
-
-        <!-- UPLOAD -->
-        <div class="panel" role="tabpanel" id="p-upload" aria-labelledby="t-upload" hidden style="color:var(--ink)">
-          <label class="drop">
-            <input type="file" id="file" accept="audio/*,video/*,image/*,.m4a,.mp3,.wav,.aac,.pdf">
-            <strong>Choose a voice memo</strong>
-            <span class="hint" style="margin:0">From Voice Memos, Files or Photos. Images and PDFs work too.</span>
-          </label>
-          <div class="fname" id="fname"></div>
-          <div class="row"><button class="btn" id="sendFile" type="button" disabled>Upload</button></div>
-        </div>
-
-        <div class="err" id="err" role="alert" hidden></div>
-        <p class="alt">Prefer the folder? Drop anything in <a href="https://drive.google.com/drive/folders/1BHsRPCtRd8py7JuCEuPSXEZTeeQBanDS" target="_blank" rel="noopener" style="color:#fff;text-decoration-color:#8FA6FF">your WMI Drive folder</a>.</p>
-      </div>
-
-      <!-- 6 · HERE'S WHAT I HEARD -->
-      <div id="thanks" class="panel" style="color:var(--ink)" role="status" aria-live="polite" tabindex="-1">
-        <p class="eb">Got it</p>
-        <h2 style="font-size:28px">Thank you, Zach.</h2>
-        <div class="echo" id="echo"></div>
-        <p class="hint" id="receipt" hidden></p>
-        <p style="color:var(--body)">It's saved for Jim. Jim will send you a written summary within 24 hours.<span id="changesLine"> You'll see the changes on the site by <strong id="changesBy"></strong>.</span></p>
-        <p class="hint" id="demoNote" hidden>Draft mode: nothing was actually sent, because the Apps Script URL isn't set yet.</p>
-        <button class="btn btn-o" id="again" type="button">Add something else</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 7 · WHAT HAPPENS NEXT -->
-<section class="wash" id="next">
-  <div class="wrap">
-    <p class="eb">What happens next</p>
-    <h2>You talk. We listen. Jim confirms.</h2>
-    <ol class="steps">
-      <li><div><h3>SuperWho listens</h3><p>Your voice note, message or memo goes straight to Jim's WMI folder. Nothing gets lost in a text thread.</p></div></li>
-      <li><div><h3>It sums up what it heard</h3><p>You get a short summary of what you asked for, in plain words, so you can check we understood you.</p></div></li>
-      <li><div><h3>Jim confirms, then we make changes</h3><p>Nothing on your site changes until Jim has checked it with you.</p></div></li>
-    </ol>
-    <div class="glimpse">
-      <p class="eb">A small taste</p>
-      <p>This is a small taste of SuperWho: you speak, and your words turn into action without all the back-and-forth. Someday the same idea could help with the “one-stop place” you described for missionaries, partners and supporters. Whenever you're ready, we'd love to dream about that with you.</p>
+      <a class="btn" id="previewBtn" href="https://www.worldmissioninitiative.com/" target="_blank" rel="noopener">Open your site →</a>
     </div>
   </div>
 </section>
@@ -1007,8 +952,6 @@ footer .verse{font-family:var(--mono);font-size:12px}
    ===================================================================== */
 // Apps Script web app that saves Zach's replies to Drive.
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyplwI7aavAzhVGk8NKElsryoKRDW3yxA9Zz_cozIGanFuXNWYjqS190N_Km9R4J9UQ/exec";
-// TODO(Jim): the "changes by" date, e.g. "Tuesday, Nov 24". Empty = that sentence is hidden.
-const CHANGES_BY      = "";
 const PREVIEW_URL     = "https://www.worldmissioninitiative.com/"; // live Wix site
 const SHARED_KEY      = "wmi-zach";  // must match SHARED_KEY in Code.gs (a light spam guard, not real security)
 const MAX_MB          = 30;          // bigger files: send Zach to the Drive folder instead
@@ -1016,123 +959,16 @@ const MAX_MB          = 30;          // bigger files: send Zach to the Drive fol
 
 const $ = id => document.getElementById(id);
 const DEMO = !/^https:\/\/script\.google\.com\//.test(APPS_SCRIPT_URL);
-if (CHANGES_BY) { $('changesBy').textContent = CHANGES_BY; } else { $('changesLine').hidden = true; }
 $('previewBtn').href = PREVIEW_URL;
 
-/* tabs */
-const tabs = ['talk','type','upload'];
-tabs.forEach(t => $('t-'+t).addEventListener('click', () => {
-  tabs.forEach(o => { $('t-'+o).setAttribute('aria-selected', o===t); $('p-'+o).hidden = o!==t; });
-  hideErr();
-}));
-
-function showErr(m){ const e=$('err'); e.textContent=m; e.hidden=false; e.style.color='#FFB4AB'; }
-function hideErr(){ $('err').hidden=true; }
-
-/* submit */
+/* shared helpers for the Talk card */
 const blobToB64 = blob => new Promise((res, rej) => {
   const r = new FileReader(); r.onload = () => res(String(r.result).split(',')[1]); r.onerror = rej; r.readAsDataURL(blob);
 });
-async function submit(payload, echoHtml, btn){
-  hideErr();
-  const label = btn.textContent; btn.disabled = true; btn.textContent = 'Sending…';
-  payload = Object.assign({
-    key: SHARED_KEY, from: 'Zach', question: $('theQuestion').textContent.trim(),
-    page: location.href, sentAt: new Date().toISOString(), userAgent: navigator.userAgent
-  }, payload);
-  let j = {};
-  try {
-    if (!DEMO) {
-      // text/plain keeps this a "simple" request, so Apps Script doesn't need a CORS preflight
-      const r = await fetch(APPS_SCRIPT_URL, { method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(payload) });
-      j = await r.json().catch(() => ({}));
-      if (!r.ok || !j.ok) throw new Error(j.error || ('HTTP '+r.status));
-    } else {
-      await new Promise(r => setTimeout(r, 600));
-      $('demoNote').hidden = false;
-    }
-    $('echo').innerHTML = echoHtml;
-    const rc = $('receipt'), parts = [];
-    if (j && j.receivedAt) parts.push('Received at ' + j.receivedAt);
-    if (j && j.receipt) parts.push('Receipt #' + j.receipt);
-    rc.textContent = parts.join(' · '); rc.hidden = !parts.length;
-    $('form').style.display = 'none';
-    $('thanks').classList.add('show');
-    $('thanks').focus();
-  } catch (e) {
-    showErr("That didn't go through (" + e.message + "). Please try again, or drop it in the Drive folder below.");
-  } finally { btn.disabled = false; btn.textContent = label; }
-}
-const esc = s => { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }; // no literal entities: the deploy tool decodes them
 const fmt = s => Math.floor(s/60) + ':' + String(Math.floor(s%60)).padStart(2,'0');
-
-$('again').addEventListener('click', () => { $('thanks').classList.remove('show'); $('form').style.display=''; $('demoNote').hidden=true; });
-
-/* TYPE */
-$('sendText').addEventListener('click', () => {
-  const t = $('msg').value.trim();
-  if (!t) { showErr('Type or dictate something first.'); return; }
-  submit({ kind:'text', text:t }, '<span class="lbl">Here\'s what I heard</span>' + esc(t), $('sendText'))
-    .then(() => { if ($('thanks').classList.contains('show')) $('msg').value=''; });
-});
-
-/* UPLOAD */
-$('file').addEventListener('change', () => {
-  const f = $('file').files[0];
-  $('fname').textContent = f ? (f.name + ' · ' + (f.size/1048576).toFixed(1) + ' MB') : '';
-  $('sendFile').disabled = !f;
-  hideErr();
-  if (f && f.size > MAX_MB*1048576) { showErr('That file is over ' + MAX_MB + ' MB. Please drop it in the Drive folder below instead.'); $('sendFile').disabled = true; }
-});
-$('sendFile').addEventListener('click', async () => {
-  const f = $('file').files[0]; if (!f) return;
-  const data = await blobToB64(f);
-  submit({ kind:'upload', filename:f.name, mimeType:f.type || 'application/octet-stream', data },
-    '<span class="lbl">Received</span>' + esc(f.name) + ' (' + (f.size/1048576).toFixed(1) + ' MB)', $('sendFile'));
-});
-
-/* TALK: MediaRecorder */
-let rec, chunks = [], stream, t0, tick, voiceBlob, voiceSecs = 0;
 const pickType = () => ['audio/webm;codecs=opus','audio/mp4','audio/webm','audio/ogg;codecs=opus']
   .find(t => window.MediaRecorder && MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(t)) || '';
 const canRecord = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder);
-if (!canRecord) {
-  $('recLabel').textContent = 'Not available';
-  $('recBtn').disabled = true;
-  $('recHint').textContent = "This browser can't record here. Use Type (with your keyboard's mic) or Upload a voice memo.";
-}
-async function startRec(){
-  hideErr();
-  try { stream = await navigator.mediaDevices.getUserMedia({ audio:true }); }
-  catch (e) { showErr('Microphone permission was blocked. You can allow it in your browser settings, or use Type or Upload.'); return; }
-  const type = pickType();
-  rec = new MediaRecorder(stream, type ? { mimeType:type } : undefined);
-  chunks = [];
-  rec.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
-  rec.onstop = () => {
-    stream.getTracks().forEach(t => t.stop());
-    voiceBlob = new Blob(chunks, { type: rec.mimeType || type || 'audio/webm' });
-    $('playback').src = URL.createObjectURL(voiceBlob); $('playback').hidden = false;
-    $('recActions').hidden = false; $('recHint').textContent = 'Listen back if you like, then send.';
-    $('recLabel').textContent = 'Tap to talk'; $('recBtn').classList.remove('on');
-  };
-  rec.start(1000);
-  t0 = Date.now(); voiceSecs = 0; $('timer').textContent = '0:00';
-  tick = setInterval(() => { voiceSecs = (Date.now()-t0)/1000; $('timer').textContent = fmt(voiceSecs); }, 250);
-  $('recBtn').classList.add('on'); $('recLabel').textContent = 'Tap to stop';
-  $('playback').hidden = true; $('recActions').hidden = true; $('recHint').textContent = "Listening… take your time.";
-}
-function stopRec(){ clearInterval(tick); if (rec && rec.state !== 'inactive') rec.stop(); }
-$('recBtn').addEventListener('click', () => (rec && rec.state === 'recording') ? stopRec() : startRec());
-$('redo').addEventListener('click', () => { voiceBlob=null; $('playback').hidden=true; $('recActions').hidden=true; $('timer').textContent=''; startRec(); });
-$('sendVoice').addEventListener('click', async () => {
-  if (!voiceBlob) return;
-  if (voiceBlob.size > MAX_MB*1048576) { showErr('That recording is very long. Please save it as a memo and drop it in the Drive folder.'); return; }
-  const ext = /mp4/.test(voiceBlob.type) ? 'm4a' : /ogg/.test(voiceBlob.type) ? 'ogg' : 'webm';
-  const data = await blobToB64(voiceBlob);
-  submit({ kind:'voice', filename:'zach-voice-note.' + ext, mimeType:voiceBlob.type, durationSec:Math.round(voiceSecs), data },
-    '<span class="lbl">Received</span>Your voice note (' + fmt(voiceSecs) + ').', $('sendVoice'));
-});
 /* ===== HERE'S WHAT WE HEARD: list + reply box ===== */
 (function heardBox(){
   const pillCls = { done:'done', progress:'prog', gary:'gary', you:'you', jim:'jim' };
@@ -1220,12 +1056,12 @@ $('sendVoice').addEventListener('click', async () => {
   setInterval(loadHeard, 60000);
   setInterval(renderHeard, 30000); // keeps "x min ago" fresh
 
-  /* floating "Message us" button: hidden while the reply card (or the old reply section) is on screen */
+  /* floating "Message us" button: hidden while the Talk card is on screen */
   const fab = $('fab'), seen = new Set();
   const syncFab = () => fab.classList.toggle('off', seen.size > 0 || window.scrollY < 200);
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(es => { es.forEach(e => (e.isIntersecting && e.intersectionRatio >= 0.35) ? seen.add(e.target.id) : seen.delete(e.target.id)); syncFab(); }, { threshold:[0, 0.35, 0.6] });
-    ['hbForm', 'hbThanks', 'reply'].forEach(id => $(id) && io.observe($(id)));
+    ['hbForm', 'hbThanks'].forEach(id => $(id) && io.observe($(id)));
   }
   window.addEventListener('scroll', syncFab, { passive:true }); syncFab();
   fab.addEventListener('click', () => {
