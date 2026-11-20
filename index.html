@@ -367,7 +367,8 @@ footer .verse{font-family:var(--mono);font-size:12px}
 #update{border-top:1px solid var(--rule)}
 .hupd{margin:0 0 4px}
 .heard10{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px;counter-reset:h}
-.heard10 li{display:grid;grid-template-columns:32px 1fr;column-gap:12px;row-gap:8px;align-items:start;background:#fff;border:1px solid var(--rule);border-radius:6px;padding:14px 14px 14px 12px}
+.heard10 li{display:grid;grid-template-columns:32px 1fr;column-gap:12px;row-gap:8px;align-items:start;align-content:start;background:#fff;border:1px solid var(--rule);border-radius:6px;padding:14px 14px 14px 12px}
+.heard10 li.is-done{background:#FAFCFA}
 .heard10 li::before{counter-increment:h;content:counter(h);grid-row:span 2;font:600 13px/1 var(--mono);color:var(--blue);background:var(--light);border-radius:2px;width:32px;height:28px;display:flex;align-items:center;justify-content:center}
 .heard10 li.extra::before{content:"+"}
 .heard10 .ht{font-size:16px;line-height:1.45;color:var(--ink)}
@@ -393,13 +394,50 @@ footer .verse{font-family:var(--mono);font-size:12px}
 .hb-files button{flex:none;border:0;background:none;color:var(--blue);font:600 14px/1 var(--sans);cursor:pointer;padding:6px}
 .hb .btn.full{margin-top:16px}
 .hb-thanks{margin-top:28px}
+@media (min-width:860px){.hb h2{font-size:34px}.hb-modes{max-width:520px}}
 @media (min-width:860px){
   .heard10{grid-template-columns:1fr 1fr;gap:12px}
-  .heard10 li{grid-template-columns:32px 1fr auto}
-  .heard10 li::before{grid-row:auto}
   .hb{padding:28px}
   .hb-box{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
 }
+/* live status bars (Nov 20) */
+.hst{display:grid;gap:7px}
+.hst-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.hst-pct{font:600 13px/1 var(--mono);color:var(--blue)}
+.hst-when{font:400 12px/1.4 var(--mono);color:var(--hint)}
+.hst-now{font-size:14px;line-height:1.4;color:var(--body);margin:0}
+.hst-now b{font-weight:600;color:var(--ink)}
+.hbar{height:10px;border-radius:99px;background:#EDF0F5;overflow:hidden;position:relative}
+.hbar i{display:block;height:100%;width:0;border-radius:inherit;background-color:var(--blue);transition:width .9s ease}
+.hbar.run i{background-image:repeating-linear-gradient(-45deg,rgba(255,255,255,.28) 0 7px,transparent 7px 14px);background-size:19.8px 19.8px;animation:hstripe 1.4s linear infinite}
+@keyframes hstripe{to{background-position:19.8px 0}}
+.hbar.wait i{background:#E7C97A}
+.hst.waiting .hst-now{color:#6B5520}
+.hst.done .hst-when{color:#1B6E35}
+.hov{margin-top:20px;background:var(--navy);color:#fff;border-radius:8px;padding:16px 16px 14px}
+.hov-row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.hov-n{font-size:22px;font-weight:700;letter-spacing:-.01em}
+.hov-p{font:600 15px/1 var(--mono);color:#B9CBE0}
+.hov .hbar{height:12px;margin-top:12px;background:rgba(255,255,255,.14)}
+.hov .hbar i{background-color:#5B8CFF}
+.hov .hst-when{color:#B9CBE0;margin-top:10px;display:block}
+@media (prefers-reduced-motion:reduce){.hbar.run i{animation:none}.hbar i{transition:none}}
+
+/* talk to us card (Nov 20) */
+.hb{border:2px solid var(--blue);background:#fff;animation:hglow 3.6s ease-in-out infinite}
+@keyframes hglow{0%,100%{box-shadow:0 0 0 0 rgba(31,63,214,.10),0 6px 18px rgba(31,63,214,.08)}50%{box-shadow:0 0 0 7px rgba(31,63,214,.16),0 10px 34px rgba(31,63,214,.22)}}
+.hb h2{font-size:28px;margin-bottom:8px}
+.hb-modes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 14px}
+.hb-mode{position:relative;min-height:76px;border:1.5px solid var(--blue);border-radius:8px;background:var(--light);color:var(--blue);font:600 16px/1.2 var(--sans);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;-webkit-tap-highlight-color:transparent;padding:8px 4px}
+.hb-mode .ic{font-size:24px;line-height:1}
+.hb-mode:hover{background:#D6DEFA}
+.hb-mode.on{background:#C62828;border-color:#C62828;color:#fff}
+.hb-mode[disabled]{opacity:.45;cursor:not-allowed}
+.hb-mode input{position:absolute;opacity:0;width:1px;height:1px}
+.hb #hbSend{min-height:58px;font-size:18px}
+.fab{position:fixed;z-index:50;right:max(16px,env(safe-area-inset-right));bottom:max(16px,calc(env(safe-area-inset-bottom) + 10px));display:flex;align-items:center;gap:8px;min-height:50px;padding:0 18px;border:0;border-radius:99px;background:var(--blue);color:#fff;font:600 15px/1 var(--sans);box-shadow:0 8px 24px rgba(23,54,83,.30);cursor:pointer;transition:opacity .25s ease,transform .25s ease;-webkit-tap-highlight-color:transparent}
+.fab.off{opacity:0;transform:translateY(16px);pointer-events:none}
+@media (prefers-reduced-motion:reduce){.hb{animation:none;box-shadow:0 0 0 5px rgba(31,63,214,.14)}.fab{transition:none}}
 .pmode{background:var(--light);color:var(--blue);font:500 12px/1.4 var(--mono);text-align:center;padding:8px 12px;letter-spacing:.04em}
   </style>
 </head>
@@ -479,22 +517,28 @@ footer .verse{font-family:var(--mono);font-size:12px}
     <p class="eb">From your voice memo · Nov 19</p>
     <h2>Here's what we heard</h2>
     <p class="lead" style="margin-top:14px">Your 10 points in plain words, and where each one stands. If we got anything wrong or missed something, tell us right below.</p>
-    <p class="hint hupd">Status updated <span id="heardUpdated"></span></p>
+    <div class="hov" id="heardOverall" aria-live="polite">
+      <div class="hov-row"><span class="hov-n" id="hovN">3 of 10 done</span><span class="hov-p" id="hovP"></span></div>
+      <div class="hbar run" aria-hidden="true"><i id="hovBar"></i></div>
+      <span class="hst-when" id="heardUpdated"></span>
+    </div>
     <ol class="heard10" id="heardList" aria-label="What we heard and where each item stands"></ol>
 
     <div class="hb" id="hbForm">
       <div class="hb-box">
         <div>
-          <h3>Reply, correct or add anything</h3>
-          <p class="lead">Type a few words, record a voice note, or add a photo. Any one is enough.</p>
+          <p class="eb">Your turn</p>
+          <h2>Talk to us here</h2>
+          <p class="lead">Jim sees your message right away, and you'll hear back fast. Fix anything we got wrong, or add something new.</p>
+          <div class="hb-modes" role="group" aria-label="How would you like to reply?">
+            <button class="hb-mode" id="hbType" type="button"><span class="ic" aria-hidden="true">⌨️</span>Type</button>
+            <button class="hb-mode" id="hbRec" type="button"><span class="ic" aria-hidden="true">🎙</span><span id="hbRecLabel">Voice</span></button>
+            <label class="hb-mode"><span class="ic" aria-hidden="true">📷</span>Photo<input type="file" id="hbFile" accept="image/*,audio/*,video/*,.pdf,.m4a,.mp3,.wav" multiple></label>
+          </div>
         </div>
         <div>
-          <label class="sr" for="hbText">Your reply</label>
+          <label class="sr" for="hbText">Your message</label>
           <textarea id="hbText" placeholder="For example: on number 8, use a photo of Marat speaking. Or tap the mic on your keyboard and just talk."></textarea>
-          <div class="hb-extras">
-            <button class="btn btn-o" id="hbRec" type="button"><span aria-hidden="true">🎙</span> <span id="hbRecLabel">Voice note</span></button>
-            <label class="btn btn-o hb-file"><span aria-hidden="true">📷</span> Photo or file<input type="file" id="hbFile" accept="image/*,audio/*,video/*,.pdf,.m4a,.mp3,.wav" multiple></label>
-          </div>
           <div class="hb-voice" id="hbVoice" hidden>
             <div class="timer" id="hbTimer"></div>
             <audio id="hbPlay" controls hidden></audio>
@@ -519,6 +563,8 @@ footer .verse{font-family:var(--mono);font-size:12px}
     </div>
   </div>
 </section>
+
+<button class="fab off" id="fab" type="button" aria-label="Message us"><span aria-hidden="true">💬</span>Message us</button>
 
 <!-- 2 · WHAT WE HEARD -->
 <section class="wash" id="heard">
@@ -681,23 +727,26 @@ footer .verse{font-family:var(--mono);font-size:12px}
   </template>
 
   <script>
-    // ===== "Here's what we heard" (Zach's Nov 19 voice memo). Edit statuses here, then redeploy. =====
-    // status: "done" | "progress" | "gary" | "you" | "jim"
-    const HEARD_UPDATED = "Fri, Nov 20, 2026";
+    // ===== "Here's what we heard" (Zach's Nov 19 voice memo) =====
+    // Live statuses come from heard-status.json (same folder), fetched with ?t=Date.now() and re-polled every 60s.
+    // Update them with /workspace/zach-page/set-status.py. The values below are only the fallback if that fetch fails.
+    // status: "done" | "progress" | "gary" | "you" | "jim"; percent 0-100 (or step/steps); now = short line; updated/doneAt = ISO time.
+    const HEARD_STATUS_URL = "heard-status.json";
+    const HEARD_UPDATED = "2026-11-20T14:31:00-05:00";
     const HEARD = [
-      { text: "Make every link and button work on phone and computer: the logo, Give, Partner, Invite and Pray.", status: "progress" },
-      { text: "Clean up the glitches: the stray dots, the logo cut off at the bottom, and text sitting out of place.", status: "progress" },
-      { text: "Connect Zeffy to the giving form and set up the different giving funds with Gary.", status: "gary" },
-      { text: "Send website form messages to the WMI info inbox and to your inbox.", status: "progress" },
-      { text: "Close the big gaps between sections, like the space above Invite WMI, Pray, Give and Serve.", status: "done" },
-      { text: "Remove the repeated \"Find your place in the mission\" block on the home page.", status: "done" },
-      { text: "Put the contact email in the footer for people who'd rather email than fill in a form.", status: "done" },
-      { text: "More variety in the photos: the crowds and the numbers, and also \"the one.\" For example, Marat speaking on the Serve page.", status: "progress" },
-      { text: "Add the testimonies: stories and photos of individual people from your memos and Drive, for example on Global Work.", status: "progress" },
-      { text: "Make the first phone screen show what WMI does right away, with a sliding photo carousel and tappable Invite, Give and Pray cards.", status: "progress" }
+      { id: 1, text: "Make every link and button work on phone and computer: the logo, Give, Partner, Invite and Pray.", status: "progress", percent: 80, now: "Home links done; checking every other page and the phone menu", updated: "2026-11-20T14:31:00-05:00" },
+      { id: 2, text: "Clean up the glitches: the stray dots, the logo cut off at the bottom, and text sitting out of place.", status: "progress", percent: 40, now: "Phone footer logo fixed; clearing stray dots and lining up text on the other pages", updated: "2026-11-20T14:31:00-05:00" },
+      { id: 3, text: "Connect Zeffy to the giving form and set up the different giving funds with Gary.", status: "gary", percent: 0, now: "Waiting on Gary's Zeffy setup and the list of giving funds", updated: "2026-11-20T14:31:00-05:00" },
+      { id: 4, text: "Send website form messages to the WMI info inbox and to your inbox.", status: "progress", percent: 10, now: "Up next: sending form messages to the WMI info inbox and yours", updated: "2026-11-20T14:31:00-05:00" },
+      { id: 5, text: "Close the big gaps between sections, like the space above Invite WMI, Pray, Give and Serve.", status: "done", percent: 100, now: "", updated: "2026-11-19T14:40:00-05:00", doneAt: "2026-11-19T14:40:00-05:00" },
+      { id: 6, text: "Remove the repeated \"Find your place in the mission\" block on the home page.", status: "done", percent: 100, now: "", updated: "2026-11-20T14:24:00-05:00", doneAt: "2026-11-20T14:24:00-05:00" },
+      { id: 7, text: "Put the contact email in the footer for people who'd rather email than fill in a form.", status: "done", percent: 100, now: "", updated: "2026-11-19T14:40:00-05:00", doneAt: "2026-11-19T14:40:00-05:00" },
+      { id: 8, text: "More variety in the photos: the crowds and the numbers, and also \"the one.\" For example, Marat speaking on the Serve page.", status: "progress", percent: 20, now: "Picked fresh photos from your Drive; swapping them in next", updated: "2026-11-20T14:31:00-05:00" },
+      { id: 9, text: "Add the testimonies: stories and photos of individual people from your memos and Drive, for example on Global Work.", status: "progress", percent: 20, now: "Gathered the stories from your memos; adding the ones cleared to share", updated: "2026-11-20T14:31:00-05:00" },
+      { id: 10, text: "Make the first phone screen show what WMI does right away, with a sliding photo carousel and tappable Invite, Give and Pray cards.", status: "progress", percent: 5, now: "Queued after the photos", updated: "2026-11-20T14:31:00-05:00" }
     ];
     const HEARD_EXTRA = [
-      { text: "You'd like to talk with Jim about AI tools, like SuperWho, for the ministry.", status: "jim" }
+      { id: "ai", text: "You'd like to talk with Jim about AI tools, like SuperWho, for the ministry.", status: "jim", now: "Jim will reach out", updated: "2026-11-20T14:31:00-05:00" }
     ];
     const HEARD_LABEL = { done: "Done", progress: "In progress", gary: "Need Gary", you: "Need you", jim: "Jim will reach out" };
     const HEARD_QUESTION = "Here's what we heard - reply";
@@ -1010,16 +1059,97 @@ $('sendVoice').addEventListener('click', async () => {
 /* ===== HERE'S WHAT WE HEARD: list + reply box ===== */
 (function heardBox(){
   const pillCls = { done:'done', progress:'prog', gary:'gary', you:'you', jim:'jim' };
-  $('heardUpdated').textContent = HEARD_UPDATED;
-  const addItem = (it, extra) => {
-    const li = document.createElement('li'); if (extra) li.className = 'extra';
-    const t = document.createElement('span'); t.className = 'ht'; t.textContent = it.text;
-    const p = document.createElement('span'); p.className = 'pill ' + (pillCls[it.status] || 'prog');
-    p.textContent = HEARD_LABEL[it.status] || it.status;
-    li.appendChild(t); li.appendChild(p); $('heardList').appendChild(li);
-  };
-  HEARD.forEach(it => addItem(it, false));
-  HEARD_EXTRA.forEach(it => addItem(it, true));
+  const WAIT_ON = { gary:'Waiting on Gary', you:'Waiting on you' };
+  const TZ = 'America/New_York';
+  const dayKey = d => d.toLocaleDateString('en-US', { timeZone:TZ });
+  const tFmt = d => d.toLocaleTimeString('en-US', { timeZone:TZ, hour:'numeric', minute:'2-digit' });
+  const dFmt = d => d.toLocaleDateString('en-US', { timeZone:TZ, month:'short', day:'numeric' });
+  const ago = d => { const m = Math.round((Date.now() - d) / 60000); if (m < 1) return 'just now'; if (m < 60) return m + ' min ago'; const h = Math.round(m/60); return h < 24 ? h + (h === 1 ? ' hour ago' : ' hours ago') : ''; };
+  const when = iso => { const d = new Date(iso); if (isNaN(d)) return ''; const today = dayKey(d) === dayKey(new Date()); const a = ago(d);
+    return (today ? tFmt(d) + ' ET' : dFmt(d) + ', ' + tFmt(d) + ' ET') + (a ? ' · ' + a : ''); };
+  const doneWhen = iso => { const d = new Date(iso); if (isNaN(d)) return 'Done'; return dayKey(d) === dayKey(new Date()) ? 'Done today, ' + tFmt(d) + ' ET' : 'Done ' + dFmt(d); };
+  const pctOf = it => it.status === 'done' ? 100 : (typeof it.percent === 'number' ? it.percent : (it.steps ? 100 * (it.step || 0) / it.steps : 0));
+  const clamp = n => Math.max(0, Math.min(100, Math.round(n)));
+  const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+  let items = HEARD.map(x => Object.assign({}, x)), extra = HEARD_EXTRA.map(x => Object.assign({}, x)), updatedAt = HEARD_UPDATED;
+
+  function statusBlock(it){
+    const box = el('div', 'hst'), top = el('div', 'hst-top'), st = it.status;
+    top.appendChild(el('span', 'pill ' + (pillCls[st] || 'prog'), HEARD_LABEL[st] || st));
+    if (st === 'done') {
+      box.classList.add('done'); top.appendChild(el('span', 'hst-when', doneWhen(it.doneAt || it.updated)));
+      box.appendChild(top); return box;
+    }
+    if (st === 'progress') {
+      const pc = clamp(pctOf(it));
+      top.appendChild(el('span', 'hst-pct', it.steps ? 'Step ' + (it.step || 0) + ' of ' + it.steps : pc + '%'));
+      box.appendChild(top);
+      const bar = el('div', 'hbar run'); bar.setAttribute('role', 'progressbar'); bar.setAttribute('aria-valuenow', pc); bar.setAttribute('aria-valuemin', 0); bar.setAttribute('aria-valuemax', 100);
+      const fill = el('i'); bar.appendChild(fill); box.appendChild(bar);
+      requestAnimationFrame(() => { fill.style.width = Math.max(pc, 3) + '%'; });
+      if (it.now) { const n = el('p', 'hst-now'); n.appendChild(el('b', null, 'Now: ')); n.appendChild(document.createTextNode(it.now)); box.appendChild(n); }
+      if (it.updated) box.appendChild(el('span', 'hst-when', 'Updated ' + when(it.updated)));
+      return box;
+    }
+    if (st === 'gary' || st === 'you') {
+      box.classList.add('waiting'); top.appendChild(el('span', 'hst-when', '⏸ Paused'));
+      box.appendChild(top);
+      const pc = clamp(pctOf(it));
+      if (pc > 0) { const bar = el('div', 'hbar wait'); const f = el('i'); f.style.width = pc + '%'; bar.appendChild(f); box.appendChild(bar); }
+      box.appendChild(el('p', 'hst-now', it.now || WAIT_ON[st]));
+      if (it.updated) box.appendChild(el('span', 'hst-when', 'Updated ' + when(it.updated)));
+      return box;
+    }
+    box.appendChild(top);
+    if (it.now && it.now !== HEARD_LABEL[st]) box.appendChild(el('p', 'hst-now', it.now));
+    return box;
+  }
+  function renderHeard(){
+    const ul = $('heardList'); ul.textContent = '';
+    const add = (it, isExtra) => {
+      const li = el('li', (isExtra ? 'extra ' : '') + (it.status === 'done' ? 'is-done' : ''));
+      li.appendChild(el('span', 'ht', it.text)); li.appendChild(statusBlock(it)); ul.appendChild(li);
+    };
+    items.forEach(it => add(it, false)); extra.forEach(it => add(it, true));
+    const nDone = items.filter(it => it.status === 'done').length;
+    const avg = clamp(items.reduce((a, it) => a + pctOf(it), 0) / (items.length || 1));
+    $('hovN').textContent = nDone + ' of ' + items.length + ' done';
+    $('hovP').textContent = avg + '% overall';
+    requestAnimationFrame(() => { $('hovBar').style.width = Math.max(avg, 3) + '%'; });
+    const latest = [updatedAt].concat(items.map(i => i.updated), extra.map(i => i.updated)).filter(Boolean).map(x => new Date(x)).filter(d => !isNaN(d)).sort((a, b) => b - a)[0];
+    $('heardUpdated').textContent = latest ? 'Last update ' + when(latest.toISOString()) : '';
+  }
+  async function loadHeard(){
+    try {
+      const r = await fetch(HEARD_STATUS_URL + '?t=' + Date.now(), { cache:'no-store' });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const j = await r.json();
+      const byId = {}; (j.items || []).forEach(x => { byId[String(x.id)] = x; });
+      items = HEARD.map(base => Object.assign({}, base, byId[String(base.id)] || {}, { text: (byId[String(base.id)] || {}).text || base.text }));
+      const exById = {}; (j.extra || []).forEach(x => { exById[String(x.id)] = x; });
+      extra = HEARD_EXTRA.map(base => Object.assign({}, base, exById[String(base.id)] || {}, { text: (exById[String(base.id)] || {}).text || base.text }));
+      if (j.updated) updatedAt = j.updated;
+    } catch (e) { /* keep the last good values (inline fallback on first load) */ }
+    renderHeard();
+  }
+  renderHeard(); loadHeard();
+  setInterval(loadHeard, 60000);
+  setInterval(renderHeard, 30000); // keeps "x min ago" fresh
+
+  /* floating "Message us" button: hidden while the reply card (or the old reply section) is on screen */
+  const fab = $('fab'), seen = new Set();
+  const syncFab = () => fab.classList.toggle('off', seen.size > 0 || window.scrollY < 200);
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => { es.forEach(e => (e.isIntersecting && e.intersectionRatio >= 0.35) ? seen.add(e.target.id) : seen.delete(e.target.id)); syncFab(); }, { threshold:[0, 0.35, 0.6] });
+    ['hbForm', 'hbThanks', 'reply'].forEach(id => $(id) && io.observe($(id)));
+  }
+  window.addEventListener('scroll', syncFab, { passive:true }); syncFab();
+  fab.addEventListener('click', () => {
+    const target = $('hbForm').hidden ? $('hbThanks') : $('hbForm');
+    target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'center' });
+    if (!$('hbForm').hidden) setTimeout(() => $('hbText').focus({ preventScroll:true }), 450);
+  });
+  $('hbType').addEventListener('click', () => { $('hbText').focus(); $('hbText').scrollIntoView({ behavior:'smooth', block:'center' }); });
 
   const err = m => { const e = $('hbErr'); e.textContent = m; e.hidden = false; };
   const clrErr = () => { $('hbErr').hidden = true; };
@@ -1073,7 +1203,7 @@ $('sendVoice').addEventListener('click', async () => {
   $('hbRec').addEventListener('click', () => (hRec && hRec.state === 'recording') ? hStop() : hStart());
   $('hbVoiceDel').addEventListener('click', () => {
     hBlob = null; $('hbPlay').hidden = true; $('hbVoiceActions').hidden = true; $('hbVoice').hidden = true;
-    $('hbRecLabel').textContent = 'Voice note';
+    $('hbRecLabel').textContent = 'Voice';
   });
 
   async function sendOne(payload){
@@ -1124,7 +1254,7 @@ $('sendVoice').addEventListener('click', async () => {
     $('hbReceipt').textContent = parts.join(' · '); $('hbReceipt').hidden = !parts.length;
     $('hbDemo').hidden = !demo;
     $('hbText').value = ''; files = []; renderFiles(); hBlob = null;
-    $('hbVoice').hidden = true; $('hbRecLabel').textContent = 'Voice note';
+    $('hbVoice').hidden = true; $('hbRecLabel').textContent = 'Voice';
     btn.disabled = false; btn.textContent = label;
     $('hbForm').hidden = true; $('hbThanks').hidden = false; $('hbThanks').focus();
   });
