@@ -1188,6 +1188,22 @@ const canRecord = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMed
   });
   $('hbAgain').addEventListener('click', () => { $('hbThanks').hidden = true; $('hbForm').hidden = false; clrErr(); });
 })();
+
+/* page-open ping: one POST per visit (sessionStorage), no personal data, no cookies.
+   Sends only key, kind and the page path. Skipped for ?test, ?notrack, ?preview and automated browsers. */
+(function openPing(){
+  try {
+    const q = new URLSearchParams(location.search);
+    if (q.has('test') || q.has('notrack') || q.has('preview')) return;
+    if (navigator.webdriver || /HeadlessChrome/.test(navigator.userAgent)) return;
+    if (DEMO) return;
+    if (sessionStorage.getItem('wmiZachOpen')) return;
+    sessionStorage.setItem('wmiZachOpen', '1');
+    fetch(APPS_SCRIPT_URL, { method:'POST', mode:'no-cors', keepalive:true, credentials:'omit',
+      headers:{ 'Content-Type':'text/plain;charset=utf-8' },
+      body: JSON.stringify({ key: SHARED_KEY, kind: 'open', page: location.pathname + location.hash }) }).catch(() => {});
+  } catch (e) {}
+})();
     }
   </script>
 </body>
