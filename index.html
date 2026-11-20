@@ -7,6 +7,12 @@
   <meta name="color-scheme" content="dark">
   <meta name="description" content="Live website build progress for World Mission Initiative.">
   <title>WMI Website Progress</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="SuperWho">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -527,6 +533,20 @@ footer .verse{font-family:var(--mono);font-size:12px}
   .ba .lab{display:none}
 }
 .hb-got{margin:0 0 12px;font:500 13px/1.4 var(--mono);color:#1B6E35;background:#E3F4E8;border-radius:4px;padding:7px 10px}
+/* get updates on your phone (PWA + push) */
+.pwa{margin-top:18px;background:#122640;color:#F3F5F8;border:1px solid #1E3352;border-radius:12px;padding:18px 16px}
+.pwa .eb{color:#22D3EE;margin-bottom:8px}
+.pwa h3{color:#F3F5F8;font-size:20px;margin:0 0 6px}
+.pwa-lead{color:#C9D4E5;font-size:15px;line-height:1.45;margin:0 0 12px}
+.pwa-big{min-height:60px;font-size:18px}
+.pwa-ok{margin:12px 0 0;font:600 16px/1.3 var(--sans);color:#22C55E}
+.pwa-note{margin:10px 0 0;font:400 13px/1.5 var(--mono);color:#9FB0C8}
+.pwa-os{margin-top:6px}
+.pwa-os + .pwa-os{margin-top:16px;padding-top:14px;border-top:1px solid #1E3352}
+.pwa-h{margin:0 0 6px;font:600 12px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#9FB0C8}
+.pwa-steps{margin:0;padding-left:22px;color:#F3F5F8;font-size:15px;line-height:1.5}
+.pwa-steps li{margin:4px 0}
+.pwa .btn-o{background:transparent;color:#F3F5F8;border-color:#5B8CFF;margin-top:12px}
 .sw{text-transform:none;font-variant:small-caps;letter-spacing:.02em}
 .pmode{background:var(--light);color:var(--blue);font:500 12px/1.4 var(--mono);text-align:center;padding:8px 12px;letter-spacing:.04em}
   </style>
@@ -665,6 +685,41 @@ footer .verse{font-family:var(--mono);font-size:12px}
       <p class="hint" id="hbDemo" hidden>Draft mode: nothing was actually sent, because the Apps Script URL isn't set yet.</p>
       <button class="btn btn-o" id="hbAgain" type="button">Add something else</button>
     </div>
+
+        <!-- GET UPDATES ON YOUR PHONE (PWA + push) -->
+        <div class="pwa" id="pwa" hidden>
+          <p class="eb">Get updates on your phone</p>
+          <h3 id="pwaTitle">We'll tap you when something changes</h3>
+          <p class="pwa-lead" id="pwaLead">No need to check back. When a point moves or we reply, you get a notification.</p>
+          <div id="pwaApp" hidden>
+            <button class="btn full pwa-big" id="pwaOn" type="button">🔔 Turn on updates</button>
+            <p class="pwa-ok" id="pwaDone" hidden>Updates are on ✓</p>
+            <p class="pwa-note" id="pwaMsg" hidden></p>
+          </div>
+          <div id="pwaSteps" hidden>
+            <div class="pwa-os" id="pwaIos">
+              <p class="pwa-h">On iPhone</p>
+              <ol class="pwa-steps">
+                <li>Tap the <b>Share</b> button <span aria-hidden="true">⬆️</span> at the bottom of Safari.</li>
+                <li>Tap <b>Add to Home Screen</b>, then <b>Add</b>.</li>
+                <li>Open <b><span class="sw">SuperWho</span></b> from the new icon on your Home Screen.</li>
+                <li>Tap <b>Turn on updates</b>, then <b>Allow</b>.</li>
+              </ol>
+              <p class="pwa-note">Needs iOS 16.4 or later. On iPhone, updates only work from the Home Screen icon.</p>
+            </div>
+            <div class="pwa-os" id="pwaAndroid">
+              <p class="pwa-h">On Android</p>
+              <ol class="pwa-steps">
+                <li>In Chrome, tap the menu <b>⋮</b> at the top right.</li>
+                <li>Tap <b>Install app</b> or <b>Add to Home screen</b>.</li>
+                <li>Open <b><span class="sw">SuperWho</span></b> and tap <b>Turn on updates</b>, then <b>Allow</b>.</li>
+              </ol>
+              <button class="btn btn-o full" id="pwaHere" type="button" hidden>Or turn on updates right here</button>
+              <p class="pwa-ok" id="pwaDone2" hidden>Updates are on ✓</p>
+              <p class="pwa-note" id="pwaMsg2" hidden></p>
+            </div>
+          </div>
+        </div>
       </aside>
     </div>
   </div>
@@ -1204,6 +1259,68 @@ const canRecord = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMed
       body: JSON.stringify({ key: SHARED_KEY, kind: 'open', page: location.pathname + location.hash }) }).catch(() => {});
   } catch (e) {}
 })();
+
+/* ===== Get updates on your phone: installable app + Web Push =====
+   Subscribes only on a tap, never under ?test, ?notrack, ?preview or automated browsers. */
+const VAPID_PUBLIC_KEY = "BOE1HpDTr6-oOfy8VJJ2dRGk_0Wfe-kohWMjJ6XNnUUyFAPdK9SI88RFrxJprkieDgDGfnZXLxS2eTpgnbFn-T0";
+(function pwaCard(){
+  const card = $('pwa'); if (!card) return;
+  const ua = navigator.userAgent || '';
+  const isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const isAndroid = /Android/.test(ua);
+  const standalone = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+  const q = new URLSearchParams(location.search);
+  const noPush = q.has('test') || q.has('notrack') || q.has('preview') || navigator.webdriver || /HeadlessChrome/.test(ua);
+  const canPush = 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
+  if (!isIOS && !isAndroid && !standalone) return;            // desktop: keep the card hidden
+  card.hidden = false;
+  const b64ToBytes = s => { const p = '='.repeat((4 - s.length % 4) % 4); const raw = atob((s + p).replace(/-/g, '+').replace(/_/g, '/')); return Uint8Array.from(raw, c => c.charCodeAt(0)); };
+  const showOn = () => {
+    ['pwaOn', 'pwaHere'].forEach(id => { $(id).hidden = true; });
+    ['pwaDone', 'pwaDone2'].forEach(id => { $(id).hidden = false; });
+    $('pwaTitle').textContent = 'Updates are on';
+    $('pwaLead').textContent = "We'll send a short note when a point moves or when we reply.";
+  };
+  const say = (m) => { ['pwaMsg', 'pwaMsg2'].forEach(id => { $(id).textContent = m; $(id).hidden = false; }); };
+  async function turnOn(btn){
+    if (noPush) { say('Test mode: updates are not turned on here.'); return; }
+    if (!canPush) { say(isIOS ? 'This iPhone needs iOS 16.4 or later, and the Home Screen app, for updates.' : "This browser can't show updates. Try Chrome."); return; }
+    const label = btn.textContent; btn.disabled = true; btn.textContent = 'Turning on…';
+    try {
+      const perm = await Notification.requestPermission();
+      if (perm !== 'granted') { say(perm === 'denied' ? 'Updates are blocked. You can allow them in Settings, under Notifications.' : 'No problem. Tap again whenever you like.'); return; }
+      const reg = await navigator.serviceWorker.ready;
+      let sub = await reg.pushManager.getSubscription();
+      if (!sub) sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: b64ToBytes(VAPID_PUBLIC_KEY) });
+      if (!DEMO) {
+        const r = await fetch(APPS_SCRIPT_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, credentials: 'omit',
+          body: JSON.stringify({ key: SHARED_KEY, kind: 'subscribe', sub: sub.toJSON(), page: location.pathname }) });
+        const j = await r.json().catch(() => ({}));
+        if (!r.ok || !j.ok) throw new Error(j.error || ('HTTP ' + r.status));
+      }
+      showOn();
+    } catch (e) {
+      say("That didn't work (" + (e && e.message || e) + '). Please try again in a moment.');
+    } finally { btn.disabled = false; btn.textContent = label; }
+  }
+  $('pwaOn').addEventListener('click', () => turnOn($('pwaOn')));
+  $('pwaHere').addEventListener('click', () => turnOn($('pwaHere')));
+  if (standalone) {
+    $('pwaApp').hidden = false;
+    $('pwaTitle').textContent = 'Turn on updates';
+  } else {
+    $('pwaSteps').hidden = false;
+    if (isAndroid) { $('pwaSteps').insertBefore($('pwaAndroid'), $('pwaIos')); if (canPush) $('pwaHere').hidden = false; }
+  }
+  if (canPush && navigator.serviceWorker) {
+    navigator.serviceWorker.ready.then(reg => reg.pushManager.getSubscription()).then(sub => {
+      if (sub && 'Notification' in window && Notification.permission === 'granted') showOn();
+    }).catch(() => {});
+  }
+})();
+    }
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(() => {}); });
     }
   </script>
 </body>
