@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20T16:45:26-05:00",
+  "updated": "2026-11-20T17:21:04-05:00",
   "items": [
     {
       "id": 1,
@@ -58,9 +58,9 @@
     {
       "id": 8,
       "status": "progress",
-      "percent": 30,
-      "now": "Found 3 photos repeated across pages; swapping them now",
-      "updated": "2026-11-20T15:05:06-05:00"
+      "percent": 50,
+      "now": "Live: new mentoring, full-hall and sanctuary photos on Global Work, Give and Pray; Invite card refreshed. Next: more crowd and outreach shots on other pages",
+      "updated": "2026-11-20T17:21:04-05:00"
     },
     {
       "id": 9,
@@ -83,9 +83,9 @@
       "tag": "From your reply, Nov 20, 3:01 PM",
       "text": "Some fonts look out of place and some text is barely visible. Every font should match across the site.",
       "status": "progress",
-      "percent": 40,
-      "now": "Live: menu font matched, Mission quote readable, bigger labels, phone overlaps fixed on 2 pages. Next: About on phones and card fonts",
-      "updated": "2026-11-20T16:45:26-05:00"
+      "percent": 55,
+      "now": "Live: About phone timeline fixed, Join us button and Impact label readable on phones. Next: card fonts, labels and phone margins",
+      "updated": "2026-11-20T17:21:04-05:00"
     }
   ],
   "extra": [
