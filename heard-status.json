@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20T17:21:04-05:00",
+  "updated": "2026-11-20T18:00:59-05:00",
   "items": [
     {
       "id": 1,
@@ -26,10 +26,9 @@
     {
       "id": 4,
       "status": "progress",
-      "percent": 10,
-      "now": "Up next: sending form messages to the WMI info inbox and yours",
-      "updated": "2026-11-20T14:31:00-05:00",
-      "stage": "next"
+      "percent": 50,
+      "now": "Live: Invite WMI request form, emailed to info@ with an instant phone alert. Next: Pray signup and Contact forms, add zach@",
+      "updated": "2026-11-20T18:00:59-05:00"
     },
     {
       "id": 5,
@@ -83,9 +82,9 @@
       "tag": "From your reply, Nov 20, 3:01 PM",
       "text": "Some fonts look out of place and some text is barely visible. Every font should match across the site.",
       "status": "progress",
-      "percent": 55,
-      "now": "Live: About phone timeline fixed, Join us button and Impact label readable on phones. Next: card fonts, labels and phone margins",
-      "updated": "2026-11-20T17:21:04-05:00"
+      "percent": 75,
+      "now": "Live: card titles, captions and buttons now in the site font on Get Involved, About, Global Work and Mission. Next: Global Work phone margin and footer width",
+      "updated": "2026-11-20T18:00:59-05:00"
     }
   ],
   "extra": [
