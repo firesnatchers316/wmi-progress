@@ -359,6 +359,47 @@ footer .verse{font-family:var(--mono);font-size:12px}
   .steps{grid-template-columns:repeat(3,1fr)}
 }
 @media (prefers-reduced-motion:reduce){.recbtn.on{animation:none}}
+/* heard 10 (Nov 20) */
+.newstrip{background:var(--light);color:var(--navy);font-size:15px;line-height:1.45;padding:12px 0;border-bottom:1px solid var(--rule)}
+.newstrip .wrap{display:flex;gap:10px;align-items:flex-start}
+.newstrip a{color:var(--blue);font-weight:600;white-space:nowrap}
+.newtag{flex:none;font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;background:var(--blue);color:#fff;padding:5px 7px;border-radius:2px;margin-top:2px}
+#update{border-top:1px solid var(--rule)}
+.hupd{margin:0 0 4px}
+.heard10{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px;counter-reset:h}
+.heard10 li{display:grid;grid-template-columns:32px 1fr;column-gap:12px;row-gap:8px;align-items:start;background:#fff;border:1px solid var(--rule);border-radius:6px;padding:14px 14px 14px 12px}
+.heard10 li::before{counter-increment:h;content:counter(h);grid-row:span 2;font:600 13px/1 var(--mono);color:var(--blue);background:var(--light);border-radius:2px;width:32px;height:28px;display:flex;align-items:center;justify-content:center}
+.heard10 li.extra::before{content:"+"}
+.heard10 .ht{font-size:16px;line-height:1.45;color:var(--ink)}
+.pill{justify-self:start;font:600 12px/1 var(--mono);letter-spacing:.04em;padding:6px 9px;border-radius:99px;white-space:nowrap}
+.pill.done{background:#E3F4E8;color:#1B6E35}
+.pill.prog{background:var(--light);color:var(--blue)}
+.pill.gary{background:#FFF1D6;color:#7A4E00}
+.pill.you{background:#F6E3F7;color:#7A1F80}
+.pill.jim{background:#E6ECF3;color:var(--navy)}
+.hb{margin-top:28px;background:var(--wash);border:1px solid var(--rule);border-radius:6px;padding:20px 16px}
+.hb h3{margin-bottom:6px}
+.hb .lead{font-size:16px;margin-bottom:12px}
+.hb-extras{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.hb-extras .btn{min-height:48px;padding:0 10px;font-size:15px;background:#fff}
+.hb-extras .btn:hover{background:var(--ink);color:#fff}
+.hb-extras .btn.on{background:#C62828;border-color:#C62828;color:#fff}
+.hb-file{position:relative}
+.hb-file input{position:absolute;opacity:0;width:1px;height:1px}
+.hb-voice{margin-top:12px;background:#fff;border:1px solid var(--rule);border-radius:6px;padding:12px;display:grid;gap:8px}
+.hb-voice .row{margin-top:0}
+.hb-files{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:6px}
+.hb-files li{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#fff;border:1px solid var(--rule);border-radius:6px;padding:8px 10px;font:400 13px/1.4 var(--mono);word-break:break-all}
+.hb-files button{flex:none;border:0;background:none;color:var(--blue);font:600 14px/1 var(--sans);cursor:pointer;padding:6px}
+.hb .btn.full{margin-top:16px}
+.hb-thanks{margin-top:28px}
+@media (min-width:860px){
+  .heard10{grid-template-columns:1fr 1fr;gap:12px}
+  .heard10 li{grid-template-columns:32px 1fr auto}
+  .heard10 li::before{grid-row:auto}
+  .hb{padding:28px}
+  .hb-box{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+}
 .pmode{background:var(--light);color:var(--blue);font:500 12px/1.4 var(--mono);text-align:center;padding:8px 12px;letter-spacing:.04em}
   </style>
 </head>
@@ -411,6 +452,10 @@ footer .verse{font-family:var(--mono);font-size:12px}
   </div>
 </header>
 
+<div class="newstrip" id="newstrip">
+  <div class="wrap"><span class="newtag">New</span><span>We just added this so you can see what we heard from your voice memo and respond right here. Sorry the summary was late. Going forward, you'll get it right away. <a href="#update">See it ↓</a></span></div>
+</div>
+
 <main id="top">
 
 <!-- 1 · GREETING -->
@@ -424,6 +469,53 @@ footer .verse{font-family:var(--mono);font-size:12px}
     <div>
       <p class="lead" style="margin-bottom:0">Take a look on your phone, then tell us what you think. Talking is fine. You don't need to write anything.</p>
       <ul class="pillars" aria-label="WMI's three pillars"><li>Reach</li><li>Equip</li><li>Multiply</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- 1b · HERE'S WHAT WE HEARD (Nov 19 voice memo) -->
+<section id="update">
+  <div class="wrap">
+    <p class="eb">From your voice memo · Nov 19</p>
+    <h2>Here's what we heard</h2>
+    <p class="lead" style="margin-top:14px">Your 10 points in plain words, and where each one stands. If we got anything wrong or missed something, tell us right below.</p>
+    <p class="hint hupd">Status updated <span id="heardUpdated"></span></p>
+    <ol class="heard10" id="heardList" aria-label="What we heard and where each item stands"></ol>
+
+    <div class="hb" id="hbForm">
+      <div class="hb-box">
+        <div>
+          <h3>Reply, correct or add anything</h3>
+          <p class="lead">Type a few words, record a voice note, or add a photo. Any one is enough.</p>
+        </div>
+        <div>
+          <label class="sr" for="hbText">Your reply</label>
+          <textarea id="hbText" placeholder="For example: on number 8, use a photo of Marat speaking. Or tap the mic on your keyboard and just talk."></textarea>
+          <div class="hb-extras">
+            <button class="btn btn-o" id="hbRec" type="button"><span aria-hidden="true">🎙</span> <span id="hbRecLabel">Voice note</span></button>
+            <label class="btn btn-o hb-file"><span aria-hidden="true">📷</span> Photo or file<input type="file" id="hbFile" accept="image/*,audio/*,video/*,.pdf,.m4a,.mp3,.wav" multiple></label>
+          </div>
+          <div class="hb-voice" id="hbVoice" hidden>
+            <div class="timer" id="hbTimer"></div>
+            <audio id="hbPlay" controls hidden></audio>
+            <div class="row" id="hbVoiceActions" hidden><button class="btn btn-o" id="hbVoiceDel" type="button">Remove voice note</button></div>
+          </div>
+          <ul class="hb-files" id="hbFiles"></ul>
+          <div class="err" id="hbErr" role="alert" hidden></div>
+          <button class="btn full" id="hbSend" type="button">Send to Jim</button>
+          <p class="hint">Goes only to Jim and the team. You'll get a receipt with the time.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel hb-thanks" id="hbThanks" role="status" aria-live="polite" tabindex="-1" hidden>
+      <p class="eb">Got it</p>
+      <h3>Thank you, Zach.</h3>
+      <div class="echo" id="hbEcho"></div>
+      <p class="hint" id="hbReceipt" hidden></p>
+      <p style="color:var(--body)">It's saved for Jim, and he gets it right away.</p>
+      <p class="hint" id="hbDemo" hidden>Draft mode: nothing was actually sent, because the Apps Script URL isn't set yet.</p>
+      <button class="btn btn-o" id="hbAgain" type="button">Add something else</button>
     </div>
   </div>
 </section>
@@ -589,6 +681,27 @@ footer .verse{font-family:var(--mono);font-size:12px}
   </template>
 
   <script>
+    // ===== "Here's what we heard" (Zach's Nov 19 voice memo). Edit statuses here, then redeploy. =====
+    // status: "done" | "progress" | "gary" | "you" | "jim"
+    const HEARD_UPDATED = "Fri, Nov 20, 2026";
+    const HEARD = [
+      { text: "Make every link and button work on phone and computer: the logo, Give, Partner, Invite and Pray.", status: "progress" },
+      { text: "Clean up the glitches: the stray dots, the logo cut off at the bottom, and text sitting out of place.", status: "progress" },
+      { text: "Connect Zeffy to the giving form and set up the different giving funds with Gary.", status: "gary" },
+      { text: "Send website form messages to the WMI info inbox and to your inbox.", status: "progress" },
+      { text: "Close the big gaps between sections, like the space above Invite WMI, Pray, Give and Serve.", status: "done" },
+      { text: "Remove the repeated \"Find your place in the mission\" block on the home page.", status: "progress" },
+      { text: "Put the contact email in the footer for people who'd rather email than fill in a form.", status: "done" },
+      { text: "More variety in the photos: the crowds and the numbers, and also \"the one.\" For example, Marat speaking on the Serve page.", status: "progress" },
+      { text: "Add the testimonies: stories and photos of individual people from your memos and Drive, for example on Global Work.", status: "progress" },
+      { text: "Make the first phone screen show what WMI does right away, with a sliding photo carousel and tappable Invite, Give and Pray cards.", status: "progress" }
+    ];
+    const HEARD_EXTRA = [
+      { text: "You'd like to talk with Jim about AI tools, like SuperWho, for the ministry.", status: "jim" }
+    ];
+    const HEARD_LABEL = { done: "Done", progress: "In progress", gary: "Need Gary", you: "Need you", jim: "Jim will reach out" };
+    const HEARD_QUESTION = "Here's what we heard - reply";
+
     // All editable values live here. Update this object, then redeploy.
     const STATUS = {
       updated: "Nov 19, 2026, 9:50 AM ET",
@@ -894,6 +1007,129 @@ $('sendVoice').addEventListener('click', async () => {
   submit({ kind:'voice', filename:'zach-voice-note.' + ext, mimeType:voiceBlob.type, durationSec:Math.round(voiceSecs), data },
     '<span class="lbl">Received</span>Your voice note (' + fmt(voiceSecs) + ').', $('sendVoice'));
 });
+/* ===== HERE'S WHAT WE HEARD: list + reply box ===== */
+(function heardBox(){
+  const pillCls = { done:'done', progress:'prog', gary:'gary', you:'you', jim:'jim' };
+  $('heardUpdated').textContent = HEARD_UPDATED;
+  const addItem = (it, extra) => {
+    const li = document.createElement('li'); if (extra) li.className = 'extra';
+    const t = document.createElement('span'); t.className = 'ht'; t.textContent = it.text;
+    const p = document.createElement('span'); p.className = 'pill ' + (pillCls[it.status] || 'prog');
+    p.textContent = HEARD_LABEL[it.status] || it.status;
+    li.appendChild(t); li.appendChild(p); $('heardList').appendChild(li);
+  };
+  HEARD.forEach(it => addItem(it, false));
+  HEARD_EXTRA.forEach(it => addItem(it, true));
+
+  const err = m => { const e = $('hbErr'); e.textContent = m; e.hidden = false; };
+  const clrErr = () => { $('hbErr').hidden = true; };
+  let files = [];
+  let hRec, hStream, hChunks = [], hT0, hTick, hBlob = null, hSecs = 0;
+
+  function renderFiles(){
+    const ul = $('hbFiles'); ul.textContent = '';
+    files.forEach((f, i) => {
+      const li = document.createElement('li');
+      const n = document.createElement('span'); n.textContent = f.name + ' · ' + (f.size/1048576).toFixed(1) + ' MB';
+      const b = document.createElement('button'); b.type = 'button'; b.textContent = 'Remove';
+      b.addEventListener('click', () => { files.splice(i, 1); renderFiles(); });
+      li.appendChild(n); li.appendChild(b); ul.appendChild(li);
+    });
+  }
+  $('hbFile').addEventListener('change', () => {
+    clrErr();
+    Array.from($('hbFile').files).forEach(f => {
+      if (f.size > MAX_MB*1048576) err(f.name + ' is over ' + MAX_MB + ' MB. Please drop it in your WMI Drive folder instead.');
+      else files.push(f);
+    });
+    $('hbFile').value = ''; renderFiles();
+  });
+
+  if (!canRecord) { $('hbRec').disabled = true; $('hbRecLabel').textContent = 'Voice (not here)'; }
+  async function hStart(){
+    clrErr();
+    try { hStream = await navigator.mediaDevices.getUserMedia({ audio:true }); }
+    catch (e) { err('Microphone permission was blocked. You can type, or tap the mic on your keyboard.'); return; }
+    const type = pickType();
+    hRec = new MediaRecorder(hStream, type ? { mimeType:type } : undefined);
+    hChunks = [];
+    hRec.ondataavailable = e => { if (e.data && e.data.size) hChunks.push(e.data); };
+    hRec.onstop = () => {
+      hStream.getTracks().forEach(t => t.stop());
+      hBlob = new Blob(hChunks, { type: hRec.mimeType || type || 'audio/webm' });
+      $('hbPlay').src = URL.createObjectURL(hBlob); $('hbPlay').hidden = false;
+      $('hbVoiceActions').hidden = false;
+      $('hbTimer').textContent = 'Voice note ' + fmt(hSecs) + ' · ready to send';
+      $('hbRecLabel').textContent = 'Record again'; $('hbRec').classList.remove('on');
+    };
+    hRec.start(1000);
+    hT0 = Date.now(); hSecs = 0; hBlob = null;
+    $('hbVoice').hidden = false; $('hbPlay').hidden = true; $('hbVoiceActions').hidden = true;
+    $('hbTimer').textContent = 'Recording 0:00';
+    hTick = setInterval(() => { hSecs = (Date.now()-hT0)/1000; $('hbTimer').textContent = 'Recording ' + fmt(hSecs); }, 250);
+    $('hbRec').classList.add('on'); $('hbRecLabel').textContent = 'Tap to stop';
+  }
+  function hStop(){ clearInterval(hTick); if (hRec && hRec.state !== 'inactive') hRec.stop(); }
+  $('hbRec').addEventListener('click', () => (hRec && hRec.state === 'recording') ? hStop() : hStart());
+  $('hbVoiceDel').addEventListener('click', () => {
+    hBlob = null; $('hbPlay').hidden = true; $('hbVoiceActions').hidden = true; $('hbVoice').hidden = true;
+    $('hbRecLabel').textContent = 'Voice note';
+  });
+
+  async function sendOne(payload){
+    payload = Object.assign({
+      key: SHARED_KEY, from: 'Zach', question: HEARD_QUESTION,
+      page: location.href + '#update', sentAt: new Date().toISOString(), userAgent: navigator.userAgent
+    }, payload);
+    if (DEMO) { await new Promise(r => setTimeout(r, 400)); return { ok:true, demo:true }; }
+    const r = await fetch(APPS_SCRIPT_URL, { method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(payload) });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok || !j.ok) throw new Error(j.error || ('HTTP ' + r.status));
+    return j;
+  }
+
+  $('hbSend').addEventListener('click', async () => {
+    clrErr();
+    if (hRec && hRec.state === 'recording') { err('Tap "Tap to stop" to finish your voice note first.'); return; }
+    const text = $('hbText').value.trim();
+    if (!text && !hBlob && !files.length) { err('Type something, record a voice note, or add a photo first.'); return; }
+    const btn = $('hbSend'); btn.disabled = true; const label = btn.textContent;
+    const jobs = [];
+    if (text) jobs.push({ name:'Your note', make: async () => ({ kind:'text', text }) });
+    if (hBlob) { const b = hBlob, secs = hSecs; jobs.push({ name:'Your voice note (' + fmt(secs) + ')', make: async () => {
+      const ext = /mp4/.test(b.type) ? 'm4a' : /ogg/.test(b.type) ? 'ogg' : 'webm';
+      return { kind:'voice', filename:'zach-heard-reply.' + ext, mimeType:b.type, durationSec:Math.round(secs), text: text ? 'With note: ' + text : '', data: await blobToB64(b) };
+    } }); }
+    files.slice().forEach(f => jobs.push({ name: f.name, make: async () => ({ kind:'upload', filename:f.name, mimeType:f.type || 'application/octet-stream', text: text ? 'With note: ' + text : '', data: await blobToB64(f) }) }));
+    const done = [], receipts = []; let at = '', demo = false;
+    try {
+      for (let i = 0; i < jobs.length; i++) {
+        btn.textContent = jobs.length > 1 ? 'Sending ' + (i+1) + ' of ' + jobs.length + '…' : 'Sending…';
+        const j = await sendOne(await jobs[i].make());
+        done.push(jobs[i].name); if (j.receipt) receipts.push('#' + j.receipt); if (j.receivedAt) at = j.receivedAt; if (j.demo) demo = true;
+      }
+    } catch (e) {
+      btn.disabled = false; btn.textContent = label;
+      err("That didn't go through (" + e.message + ")." + (done.length ? ' Already sent: ' + done.join(', ') + '.' : '') + ' Please try again, or drop it in your WMI Drive folder.');
+      return;
+    }
+    const echo = $('hbEcho'); echo.textContent = '';
+    const lbl = document.createElement('span'); lbl.className = 'lbl'; lbl.textContent = text ? "Here's what we got" : 'Received';
+    echo.appendChild(lbl);
+    echo.appendChild(document.createTextNode(text || done.join('\n')));
+    if (text && done.length > 1) echo.appendChild(document.createTextNode('\n\nPlus: ' + done.slice(1).join(', ')));
+    const parts = [];
+    if (at) parts.push('Received at ' + at);
+    if (receipts.length) parts.push('Receipt ' + receipts.join(', '));
+    $('hbReceipt').textContent = parts.join(' · '); $('hbReceipt').hidden = !parts.length;
+    $('hbDemo').hidden = !demo;
+    $('hbText').value = ''; files = []; renderFiles(); hBlob = null;
+    $('hbVoice').hidden = true; $('hbRecLabel').textContent = 'Voice note';
+    btn.disabled = false; btn.textContent = label;
+    $('hbForm').hidden = true; $('hbThanks').hidden = false; $('hbThanks').focus();
+  });
+  $('hbAgain').addEventListener('click', () => { $('hbThanks').hidden = true; $('hbForm').hidden = false; clrErr(); });
+})();
     }
   </script>
 </body>
