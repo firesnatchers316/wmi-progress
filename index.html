@@ -438,6 +438,68 @@ footer .verse{font-family:var(--mono);font-size:12px}
 .fab{position:fixed;z-index:50;right:max(16px,env(safe-area-inset-right));bottom:max(16px,calc(env(safe-area-inset-bottom) + 10px));display:flex;align-items:center;gap:8px;min-height:50px;padding:0 18px;border:0;border-radius:99px;background:var(--blue);color:#fff;font:600 15px/1 var(--sans);box-shadow:0 8px 24px rgba(23,54,83,.30);cursor:pointer;transition:opacity .25s ease,transform .25s ease;-webkit-tap-highlight-color:transparent}
 .fab.off{opacity:0;transform:translateY(16px);pointer-events:none}
 @media (prefers-reduced-motion:reduce){.hb{animation:none;box-shadow:0 0 0 5px rgba(31,63,214,.14)}.fab{transition:none}}
+/* live progress layout (Nov 20, original WMI progress look) */
+.upd{background:#0B1A2E;color:#F3F5F8}
+.upd .eb{color:#22D3EE}
+.upd h2{color:#F3F5F8}
+.upd-sorry{margin:14px 0 0;font-size:16px;line-height:1.5;color:#C9D4E5;border-left:3px solid #22D3EE;padding:2px 0 2px 12px}
+.upd-grid{display:grid;gap:22px;margin-top:22px}
+.upd-main{min-width:0}
+.wp-card{background:#122640;border-radius:16px;padding:20px 18px;margin-top:14px}
+.upd-main>.wp-card:first-child{margin-top:0}
+.wp-live{display:flex;align-items:center;gap:8px;font:400 12px/1.4 var(--mono);color:#9FB0C8;flex-wrap:wrap}
+.wp-livedot{width:8px;height:8px;border-radius:4px;background:#22C55E;box-shadow:0 0 8px #22C55E;flex:none;animation:wpblink 2.4s ease-in-out infinite}
+@keyframes wpblink{50%{opacity:.35}}
+.wp-overall{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap;margin-top:12px}
+.wp-olabel{font-size:15px;color:#9FB0C8}
+.wp-olabel b{color:#F3F5F8;font-weight:600}
+.wp-pct{font:700 40px/1 var(--mono);letter-spacing:-.03em;color:#F3F5F8}
+.wp-barwrap{margin-top:14px;animation:wpglow 3.2s ease-in-out infinite;filter:drop-shadow(0 0 12px rgba(34,211,238,.5))}
+@keyframes wpglow{0%,100%{filter:drop-shadow(0 0 8px rgba(34,211,238,.35))}50%{filter:drop-shadow(0 0 18px rgba(34,211,238,.7))}}
+.wp-track{height:16px;background:#0A1424;border-radius:8px;overflow:hidden}
+.wp-fill{height:100%;width:0;border-radius:8px;background:linear-gradient(90deg,#3D6BFF,#22D3EE);transition:width 1s ease}
+.wp-label{font:400 12px/1 var(--mono);letter-spacing:2px;color:#9FB0C8;margin-bottom:6px}
+.wp-label.green{color:#22C55E}.wp-label.amber{color:#FBBF24}
+.wp-list{list-style:none;margin:0;padding:0}
+.wp-item{padding:14px 0;border-bottom:1px solid #1E3352}
+.wp-item:last-child{border-bottom:0;padding-bottom:2px}
+.wp-head{display:flex;align-items:flex-start;gap:12px}
+.wp-dot{width:14px;height:14px;border-radius:7px;border:2px solid currentColor;background:currentColor;flex:none;margin-top:4px}
+.wp-dot.hollow{background:transparent}
+.wp-dot.pulse{animation:wpdot 1.8s ease-in-out infinite}
+@keyframes wpdot{0%,100%{box-shadow:0 0 4px currentColor;opacity:.75}50%{box-shadow:0 0 14px currentColor;opacity:1}}
+.wp-name{flex:1;min-width:0;font-size:16px;font-weight:600;line-height:1.35;color:#F3F5F8}
+.wp-name small{display:block;font-weight:400;font-size:14px;line-height:1.45;color:#9FB0C8;margin-top:3px}
+.wp-st{flex:none;font-size:13px;font-weight:600;text-align:right;line-height:1.35;max-width:42%}
+.wp-desc{margin:4px 0 0 26px;font-size:14px;line-height:1.45;color:#9FB0C8}
+.wp-body{margin:9px 0 0 26px;display:grid;gap:6px}
+.wp-mini{height:6px;border-radius:3px;background:#0A1424;overflow:hidden}
+.wp-mini i{display:block;height:100%;width:0;border-radius:3px;background-color:#22D3EE;transition:width .9s ease}
+.wp-mini.run i{background-image:repeating-linear-gradient(-45deg,rgba(255,255,255,.30) 0 6px,transparent 6px 12px);background-size:17px 17px;animation:hstripe 1.4s linear infinite}
+.wp-mini.still i{background-color:#5A6B86}
+.wp-now{margin:0;font-size:14px;line-height:1.45;color:#C9D4E5}
+.wp-now b{color:#F3F5F8;font-weight:600}
+.wp-when{font:400 12px/1.4 var(--mono);color:#7F91AB}
+.wp-grid{display:grid;gap:14px;margin-top:14px}
+.wp-grid .wp-card{margin-top:0}
+.wp-fi{font-size:14px;line-height:1.45;padding:6px 0;color:#F3F5F8}
+.wp-fi .wp-when{display:block}
+.upd .hb{color:var(--ink);margin-top:0}
+.upd .hb h2{color:var(--ink)}
+.upd .hb .eb{color:var(--blue)}
+.upd .hb-thanks{margin-top:0;color:var(--ink)}
+.upd .hb-thanks h3{color:var(--ink)}
+@keyframes hglow2{0%,100%{box-shadow:0 0 0 0 rgba(61,107,255,.25),0 6px 18px rgba(34,211,238,.10)}50%{box-shadow:0 0 0 8px rgba(61,107,255,.30),0 10px 40px rgba(34,211,238,.35)}}
+.upd .hb{animation:hglow2 3.6s ease-in-out infinite}
+@media (min-width:700px){.wp-grid{grid-template-columns:1fr 1fr}}
+@media (min-width:960px){
+  .upd-grid{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:36px;align-items:start}
+  .upd-reply{position:sticky;top:24px}
+  .upd .hb-box{display:block}
+  .upd .hb-modes{max-width:none}
+  .upd .hb h2{font-size:30px}
+}
+@media (prefers-reduced-motion:reduce){.wp-livedot,.wp-dot.pulse,.wp-barwrap,.wp-mini.run i,.upd .hb{animation:none}.wp-fill,.wp-mini i{transition:none}}
 .pmode{background:var(--light);color:var(--blue);font:500 12px/1.4 var(--mono);text-align:center;padding:8px 12px;letter-spacing:.04em}
   </style>
 </head>
@@ -491,7 +553,7 @@ footer .verse{font-family:var(--mono);font-size:12px}
 </header>
 
 <div class="newstrip" id="newstrip">
-  <div class="wrap"><span class="newtag">New</span><span>We just added this so you can see what we heard from your voice memo and respond right here. Sorry the summary was late. Going forward, you'll get it right away. <a href="#update">See it ↓</a></span></div>
+  <div class="wrap"><span class="newtag">New</span><span>We just realized you didn't have this reply feature yesterday. So sorry for the delay. That won't happen going forward. <a href="#update">See where things stand ↓</a></span></div>
 </div>
 
 <main id="top">
@@ -511,19 +573,32 @@ footer .verse{font-family:var(--mono);font-size:12px}
   </div>
 </section>
 
-<!-- 1b · HERE'S WHAT WE HEARD (Nov 19 voice memo) -->
-<section id="update">
+<!-- 1b · LIVE PROGRESS: HERE'S WHAT WE HEARD + TALK TO US (Nov 19 voice memo) -->
+<section id="update" class="upd">
   <div class="wrap">
-    <p class="eb">From your voice memo · Nov 19</p>
-    <h2>Here's what we heard</h2>
-    <p class="lead" style="margin-top:14px">Your 10 points in plain words, and where each one stands. If we got anything wrong or missed something, tell us right below.</p>
-    <div class="hov" id="heardOverall" aria-live="polite">
-      <div class="hov-row"><span class="hov-n" id="hovN">3 of 10 done</span><span class="hov-p" id="hovP"></span></div>
-      <div class="hbar run" aria-hidden="true"><i id="hovBar"></i></div>
-      <span class="hst-when" id="heardUpdated"></span>
-    </div>
-    <ol class="heard10" id="heardList" aria-label="What we heard and where each item stands"></ol>
-
+    <p class="eb">Website progress · from your Nov 19 voice memo</p>
+    <h2>Here's what we heard, and where each one stands</h2>
+    <p class="upd-sorry">We just realized you didn't have this reply feature yesterday. So sorry for the delay. That won't happen going forward.</p>
+    <div class="upd-grid">
+      <div class="upd-main">
+        <div class="wp-card">
+          <div class="wp-live"><span class="wp-livedot" aria-hidden="true"></span><span id="wpLive">Live</span></div>
+          <div class="wp-overall">
+            <span class="wp-olabel">Overall · <b id="wpN">3 of 10 done</b></span>
+            <span class="wp-pct" id="wpPct">48%</span>
+          </div>
+          <div class="wp-barwrap" aria-hidden="true"><div class="wp-track"><div class="wp-fill" id="wpBar"></div></div></div>
+        </div>
+        <div class="wp-card">
+          <div class="wp-label">YOUR 10 POINTS</div>
+          <ol class="wp-list" id="wpList" aria-label="Your 10 points and where each one stands"></ol>
+        </div>
+        <div class="wp-grid">
+          <div class="wp-card"><div class="wp-label green">RECENTLY FINISHED</div><div id="wpFinished"></div></div>
+          <div class="wp-card"><div class="wp-label amber">WAITING ON</div><div id="wpWaiting"></div></div>
+        </div>
+      </div>
+      <aside class="upd-reply" id="talk" aria-label="Talk to us">
     <div class="hb" id="hbForm">
       <div class="hb-box">
         <div>
@@ -560,6 +635,8 @@ footer .verse{font-family:var(--mono);font-size:12px}
       <p style="color:var(--body)">It's saved for Jim, and he gets it right away.</p>
       <p class="hint" id="hbDemo" hidden>Draft mode: nothing was actually sent, because the Apps Script URL isn't set yet.</p>
       <button class="btn btn-o" id="hbAgain" type="button">Add something else</button>
+    </div>
+      </aside>
     </div>
   </div>
 </section>
@@ -734,16 +811,16 @@ footer .verse{font-family:var(--mono);font-size:12px}
     const HEARD_STATUS_URL = "heard-status.json";
     const HEARD_UPDATED = "2026-11-20T14:31:00-05:00";
     const HEARD = [
-      { id: 1, text: "Make every link and button work on phone and computer: the logo, Give, Partner, Invite and Pray.", status: "progress", percent: 80, now: "Home links done; checking every other page and the phone menu", updated: "2026-11-20T14:31:00-05:00" },
-      { id: 2, text: "Clean up the glitches: the stray dots, the logo cut off at the bottom, and text sitting out of place.", status: "progress", percent: 40, now: "Phone footer logo fixed; clearing stray dots and lining up text on the other pages", updated: "2026-11-20T14:31:00-05:00" },
-      { id: 3, text: "Connect Zeffy to the giving form and set up the different giving funds with Gary.", status: "gary", percent: 0, now: "Waiting on Gary's Zeffy setup and the list of giving funds", updated: "2026-11-20T14:31:00-05:00" },
-      { id: 4, text: "Send website form messages to the WMI info inbox and to your inbox.", status: "progress", percent: 10, now: "Up next: sending form messages to the WMI info inbox and yours", updated: "2026-11-20T14:31:00-05:00" },
-      { id: 5, text: "Close the big gaps between sections, like the space above Invite WMI, Pray, Give and Serve.", status: "done", percent: 100, now: "", updated: "2026-11-19T14:40:00-05:00", doneAt: "2026-11-19T14:40:00-05:00" },
-      { id: 6, text: "Remove the repeated \"Find your place in the mission\" block on the home page.", status: "done", percent: 100, now: "", updated: "2026-11-20T14:24:00-05:00", doneAt: "2026-11-20T14:24:00-05:00" },
-      { id: 7, text: "Put the contact email in the footer for people who'd rather email than fill in a form.", status: "done", percent: 100, now: "", updated: "2026-11-19T14:40:00-05:00", doneAt: "2026-11-19T14:40:00-05:00" },
-      { id: 8, text: "More variety in the photos: the crowds and the numbers, and also \"the one.\" For example, Marat speaking on the Serve page.", status: "progress", percent: 20, now: "Picked fresh photos from your Drive; swapping them in next", updated: "2026-11-20T14:31:00-05:00" },
-      { id: 9, text: "Add the testimonies: stories and photos of individual people from your memos and Drive, for example on Global Work.", status: "progress", percent: 20, now: "Gathered the stories from your memos; adding the ones cleared to share", updated: "2026-11-20T14:31:00-05:00" },
-      { id: 10, text: "Make the first phone screen show what WMI does right away, with a sliding photo carousel and tappable Invite, Give and Pray cards.", status: "progress", percent: 5, now: "Queued after the photos", updated: "2026-11-20T14:31:00-05:00" }
+      { id: 1, title: "Links and buttons", text: "Make every link and button work on phone and computer: the logo, Give, Partner, Invite and Pray.", status: "progress", percent: 80, now: "Home links done; checking every other page and the phone menu", updated: "2026-11-20T14:31:00-05:00" },
+      { id: 2, title: "Glitches: dots, logo, text", text: "Clean up the glitches: the stray dots, the logo cut off at the bottom, and text sitting out of place.", status: "progress", percent: 40, now: "Phone footer logo fixed; clearing stray dots and lining up text on the other pages", updated: "2026-11-20T14:31:00-05:00" },
+      { id: 3, title: "Zeffy giving form and funds", text: "Connect Zeffy to the giving form and set up the different giving funds with Gary.", status: "gary", percent: 0, now: "Waiting on Gary's Zeffy setup and the list of giving funds", updated: "2026-11-20T14:31:00-05:00" },
+      { id: 4, title: "Form messages to your inboxes", text: "Send website form messages to the WMI info inbox and to your inbox.", status: "progress", stage: "next", percent: 10, now: "Up next: sending form messages to the WMI info inbox and yours", updated: "2026-11-20T14:31:00-05:00" },
+      { id: 5, title: "Gaps between sections", text: "Close the big gaps between sections, like the space above Invite WMI, Pray, Give and Serve.", status: "done", percent: 100, now: "", updated: "2026-11-19T14:40:00-05:00", doneAt: "2026-11-19T14:40:00-05:00" },
+      { id: 6, title: "Repeated \"Find your place\" block", text: "Remove the repeated \"Find your place in the mission\" block on the home page.", status: "done", percent: 100, now: "", updated: "2026-11-20T14:24:00-05:00", doneAt: "2026-11-20T14:24:00-05:00" },
+      { id: 7, title: "Contact email in the footer", text: "Put the contact email in the footer for people who'd rather email than fill in a form.", status: "done", percent: 100, now: "", updated: "2026-11-19T14:40:00-05:00", doneAt: "2026-11-19T14:40:00-05:00" },
+      { id: 8, title: "Photo variety", text: "More variety in the photos: the crowds and the numbers, and also \"the one.\" For example, Marat speaking on the Serve page.", status: "progress", percent: 20, now: "Picked fresh photos from your Drive; swapping them in next", updated: "2026-11-20T14:31:00-05:00" },
+      { id: 9, title: "Testimonies", text: "Add the testimonies: stories and photos of individual people from your memos and Drive, for example on Global Work.", status: "progress", percent: 20, now: "Gathered the stories from your memos; adding the ones cleared to share", updated: "2026-11-20T14:31:00-05:00" },
+      { id: 10, title: "Phone first screen and carousel", text: "Make the first phone screen show what WMI does right away, with a sliding photo carousel and tappable Invite, Give and Pray cards.", status: "progress", stage: "queued", percent: 5, now: "Queued after the photos", updated: "2026-11-20T14:31:00-05:00" }
     ];
     const HEARD_EXTRA = [
       { id: "ai", text: "You'd like to talk with Jim about AI tools, like SuperWho, for the ministry.", status: "jim", now: "Jim will reach out", updated: "2026-11-20T14:31:00-05:00" }
@@ -1073,51 +1150,58 @@ $('sendVoice').addEventListener('click', async () => {
   const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
   let items = HEARD.map(x => Object.assign({}, x)), extra = HEARD_EXTRA.map(x => Object.assign({}, x)), updatedAt = HEARD_UPDATED;
 
-  function statusBlock(it){
-    const box = el('div', 'hst'), top = el('div', 'hst-top'), st = it.status;
-    top.appendChild(el('span', 'pill ' + (pillCls[st] || 'prog'), HEARD_LABEL[st] || st));
-    if (st === 'done') {
-      box.classList.add('done'); top.appendChild(el('span', 'hst-when', doneWhen(it.doneAt || it.updated)));
-      box.appendChild(top); return box;
+  const C = { done:'#22C55E', active:'#22D3EE', next:'#FBBF24', queued:'#8496B0', wait:'#FBBF24', jim:'#9FB0C8' };
+  // In progress = pulsing dot + live mini bar. Up next / Queued come from "stage" (or percent under 10).
+  const phase = it => {
+    if (it.status === 'done') return 'done';
+    if (it.status === 'gary' || it.status === 'you') return 'wait';
+    if (it.status === 'jim') return 'jim';
+    if (it.stage === 'next' || it.stage === 'queued') return it.stage;
+    return pctOf(it) < 10 ? 'queued' : 'active';
+  };
+  function itemRow(it){
+    const ph = phase(it), pc = clamp(pctOf(it));
+    const li = el('li', 'wp-item ph-' + ph), head = el('div', 'wp-head');
+    const dot = el('span', 'wp-dot' + (ph === 'active' ? ' pulse' : '') + (ph === 'queued' || ph === 'wait' ? ' hollow' : ''));
+    dot.style.color = C[ph]; dot.setAttribute('aria-hidden', 'true');
+    const name = el('span', 'wp-name', it.title || it.text);
+    let label = ph === 'done' ? doneWhen(it.doneAt || it.updated)
+      : ph === 'active' ? 'In progress · ' + (it.steps ? 'step ' + (it.step || 0) + ' of ' + it.steps : pc + '%')
+      : ph === 'next' ? 'Up next' : ph === 'queued' ? 'Queued' : (HEARD_LABEL[it.status] || it.status);
+    const st = el('span', 'wp-st', label); st.style.color = C[ph];
+    head.appendChild(dot); head.appendChild(name); head.appendChild(st); li.appendChild(head);
+    if (it.title) li.appendChild(el('p', 'wp-desc', it.text));
+    if (ph === 'done') return li;
+    const body = el('div', 'wp-body');
+    if (ph === 'active' || ph === 'next' || ph === 'queued') {
+      const bar = el('div', 'wp-mini ' + (ph === 'active' ? 'run' : 'still'));
+      bar.setAttribute('role', 'progressbar'); bar.setAttribute('aria-valuenow', pc); bar.setAttribute('aria-valuemin', 0); bar.setAttribute('aria-valuemax', 100);
+      const f = el('i'); bar.appendChild(f); body.appendChild(bar);
+      requestAnimationFrame(() => { f.style.width = Math.max(pc, 2) + '%'; });
     }
-    if (st === 'progress') {
-      const pc = clamp(pctOf(it));
-      top.appendChild(el('span', 'hst-pct', it.steps ? 'Step ' + (it.step || 0) + ' of ' + it.steps : pc + '%'));
-      box.appendChild(top);
-      const bar = el('div', 'hbar run'); bar.setAttribute('role', 'progressbar'); bar.setAttribute('aria-valuenow', pc); bar.setAttribute('aria-valuemin', 0); bar.setAttribute('aria-valuemax', 100);
-      const fill = el('i'); bar.appendChild(fill); box.appendChild(bar);
-      requestAnimationFrame(() => { fill.style.width = Math.max(pc, 3) + '%'; });
-      if (it.now) { const n = el('p', 'hst-now'); n.appendChild(el('b', null, 'Now: ')); n.appendChild(document.createTextNode(it.now)); box.appendChild(n); }
-      if (it.updated) box.appendChild(el('span', 'hst-when', 'Updated ' + when(it.updated)));
-      return box;
-    }
-    if (st === 'gary' || st === 'you') {
-      box.classList.add('waiting'); top.appendChild(el('span', 'hst-when', '⏸ Paused'));
-      box.appendChild(top);
-      const pc = clamp(pctOf(it));
-      if (pc > 0) { const bar = el('div', 'hbar wait'); const f = el('i'); f.style.width = pc + '%'; bar.appendChild(f); box.appendChild(bar); }
-      box.appendChild(el('p', 'hst-now', it.now || WAIT_ON[st]));
-      if (it.updated) box.appendChild(el('span', 'hst-when', 'Updated ' + when(it.updated)));
-      return box;
-    }
-    box.appendChild(top);
-    if (it.now && it.now !== HEARD_LABEL[st]) box.appendChild(el('p', 'hst-now', it.now));
-    return box;
+    if (it.now) { const n = el('p', 'wp-now'); n.appendChild(el('b', null, ph === 'wait' ? 'Paused: ' : ph === 'active' ? 'Now: ' : '')); n.appendChild(document.createTextNode(it.now)); body.appendChild(n); }
+    if (it.updated) body.appendChild(el('span', 'wp-when', 'Updated ' + when(it.updated)));
+    li.appendChild(body); return li;
   }
   function renderHeard(){
-    const ul = $('heardList'); ul.textContent = '';
-    const add = (it, isExtra) => {
-      const li = el('li', (isExtra ? 'extra ' : '') + (it.status === 'done' ? 'is-done' : ''));
-      li.appendChild(el('span', 'ht', it.text)); li.appendChild(statusBlock(it)); ul.appendChild(li);
-    };
-    items.forEach(it => add(it, false)); extra.forEach(it => add(it, true));
+    const ul = $('wpList'); ul.textContent = '';
+    items.forEach(it => ul.appendChild(itemRow(it)));
     const nDone = items.filter(it => it.status === 'done').length;
     const avg = clamp(items.reduce((a, it) => a + pctOf(it), 0) / (items.length || 1));
-    $('hovN').textContent = nDone + ' of ' + items.length + ' done';
-    $('hovP').textContent = avg + '% overall';
-    requestAnimationFrame(() => { $('hovBar').style.width = Math.max(avg, 3) + '%'; });
+    $('wpN').textContent = nDone + ' of ' + items.length + ' done';
+    $('wpPct').textContent = avg + '%';
+    requestAnimationFrame(() => { $('wpBar').style.width = Math.max(avg, 2) + '%'; });
     const latest = [updatedAt].concat(items.map(i => i.updated), extra.map(i => i.updated)).filter(Boolean).map(x => new Date(x)).filter(d => !isNaN(d)).sort((a, b) => b - a)[0];
-    $('heardUpdated').textContent = latest ? 'Last update ' + when(latest.toISOString()) : '';
+    $('wpLive').textContent = 'Live · last update ' + (latest ? when(latest.toISOString()) : '');
+    const fin = $('wpFinished'); fin.textContent = '';
+    const done = items.filter(it => it.status === 'done').sort((a, b) => new Date(b.doneAt || b.updated) - new Date(a.doneAt || a.updated));
+    if (!done.length) fin.appendChild(el('div', 'wp-fi', 'Nothing finished yet.'));
+    done.forEach(it => { const d = el('div', 'wp-fi', '✓ ' + (it.title || it.text)); d.appendChild(el('span', 'wp-when', doneWhen(it.doneAt || it.updated))); fin.appendChild(d); });
+    const wt = $('wpWaiting'); wt.textContent = '';
+    const waits = items.filter(it => phase(it) === 'wait').map(it => ({ who: it.status === 'gary' ? 'Gary' : 'You', text: it.now || it.title || it.text, n: it.id }))
+      .concat(extra.map(it => ({ who: '', text: (it.now || 'Jim will reach out') + ' to talk about AI tools for the ministry', n: null })));
+    if (!waits.length) wt.appendChild(el('div', 'wp-fi', 'Nothing waiting right now.'));
+    waits.forEach(w => { const d = el('div', 'wp-fi'); if (w.who) d.appendChild(el('b', null, w.who + ': ')); let t = w.who ? w.text.replace(/^Waiting on (Gary's |Gary |your |you )?/i, '') : w.text; t = t.charAt(0).toUpperCase() + t.slice(1); d.appendChild(document.createTextNode(t)); if (w.n) d.appendChild(el('span', 'wp-when', 'Point ' + w.n)); wt.appendChild(d); });
   }
   async function loadHeard(){
     try {
