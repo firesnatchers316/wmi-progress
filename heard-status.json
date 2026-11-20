@@ -1,19 +1,20 @@
 {
-  "updated": "2026-11-20T14:43:48-05:00",
+  "updated": "2026-11-20T14:57:28-05:00",
   "items": [
     {
       "id": 1,
-      "status": "progress",
-      "percent": 95,
-      "now": "All Home buttons now link to the right pages; checking one last link",
-      "updated": "2026-11-20T14:43:48-05:00"
+      "status": "done",
+      "percent": 100,
+      "now": "",
+      "updated": "2026-11-20T14:57:28-05:00",
+      "doneAt": "2026-11-20T14:57:28-05:00"
     },
     {
       "id": 2,
       "status": "progress",
-      "percent": 50,
-      "now": "Removed stray dots on Global Work; checking the other pages and phone menu next",
-      "updated": "2026-11-20T14:43:48-05:00"
+      "percent": 75,
+      "now": "Dots cleared and text lined up on computer; checking phones next",
+      "updated": "2026-11-20T14:57:28-05:00"
     },
     {
       "id": 3,
