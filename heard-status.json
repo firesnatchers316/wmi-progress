@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20T15:02:56-05:00",
+  "updated": "2026-11-20T15:05:10-05:00",
   "items": [
     {
       "id": 1,
@@ -12,9 +12,9 @@
     {
       "id": 2,
       "status": "progress",
-      "percent": 75,
-      "now": "Dots cleared and text lined up on computer; checking phones next",
-      "updated": "2026-11-20T14:57:28-05:00"
+      "percent": 80,
+      "now": "Menu, dots and computer alignment done; phone layout and font pass next",
+      "updated": "2026-11-20T15:05:06-05:00"
     },
     {
       "id": 3,
@@ -58,9 +58,9 @@
     {
       "id": 8,
       "status": "progress",
-      "percent": 20,
-      "now": "Picked fresh photos from your Drive; swapping them in next",
-      "updated": "2026-11-20T14:31:00-05:00"
+      "percent": 30,
+      "now": "Found 3 photos repeated across pages; swapping them now",
+      "updated": "2026-11-20T15:05:06-05:00"
     },
     {
       "id": 9,
@@ -83,10 +83,9 @@
       "tag": "From your reply, Nov 20, 3:01 PM",
       "text": "Some fonts look out of place and some text is barely visible. Every font should match across the site.",
       "status": "progress",
-      "stage": "next",
-      "percent": 0,
-      "now": "Queued right after the phone checks",
-      "updated": "2026-11-20T15:02:56-05:00"
+      "percent": 10,
+      "now": "Checking every page for mismatched or hard-to-read text",
+      "updated": "2026-11-20T15:05:10-05:00"
     }
   ],
   "extra": [
