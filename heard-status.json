@@ -1,18 +1,88 @@
 {
   "updated": "2026-11-20T14:31:00-05:00",
   "items": [
-    { "id": 1, "status": "progress", "percent": 80, "now": "Home links done; checking every other page and the phone menu", "updated": "2026-11-20T14:31:00-05:00" },
-    { "id": 2, "status": "progress", "percent": 40, "now": "Phone footer logo fixed; clearing stray dots and lining up text on the other pages", "updated": "2026-11-20T14:31:00-05:00" },
-    { "id": 3, "status": "gary", "percent": 0, "now": "Waiting on Gary's Zeffy setup and the list of giving funds", "updated": "2026-11-20T14:31:00-05:00" },
-    { "id": 4, "status": "progress", "percent": 10, "now": "Up next: sending form messages to the WMI info inbox and yours", "updated": "2026-11-20T14:31:00-05:00" },
-    { "id": 5, "status": "done", "percent": 100, "now": "", "updated": "2026-11-19T14:40:00-05:00", "doneAt": "2026-11-19T14:40:00-05:00" },
-    { "id": 6, "status": "done", "percent": 100, "now": "", "updated": "2026-11-20T14:24:00-05:00", "doneAt": "2026-11-20T14:24:00-05:00" },
-    { "id": 7, "status": "done", "percent": 100, "now": "", "updated": "2026-11-19T14:40:00-05:00", "doneAt": "2026-11-19T14:40:00-05:00" },
-    { "id": 8, "status": "progress", "percent": 20, "now": "Picked fresh photos from your Drive; swapping them in next", "updated": "2026-11-20T14:31:00-05:00" },
-    { "id": 9, "status": "progress", "percent": 20, "now": "Gathered the stories from your memos; adding the ones cleared to share", "updated": "2026-11-20T14:31:00-05:00" },
-    { "id": 10, "status": "progress", "percent": 5, "now": "Queued after the photos", "updated": "2026-11-20T14:31:00-05:00" }
+    {
+      "id": 1,
+      "status": "progress",
+      "percent": 80,
+      "now": "Home links done; checking every other page and the phone menu",
+      "updated": "2026-11-20T14:31:00-05:00"
+    },
+    {
+      "id": 2,
+      "status": "progress",
+      "percent": 40,
+      "now": "Phone footer logo fixed; clearing stray dots and lining up text on the other pages",
+      "updated": "2026-11-20T14:31:00-05:00"
+    },
+    {
+      "id": 3,
+      "status": "gary",
+      "percent": 0,
+      "now": "Waiting on Gary's Zeffy setup and the list of giving funds",
+      "updated": "2026-11-20T14:31:00-05:00"
+    },
+    {
+      "id": 4,
+      "status": "progress",
+      "percent": 10,
+      "now": "Up next: sending form messages to the WMI info inbox and yours",
+      "updated": "2026-11-20T14:31:00-05:00",
+      "stage": "next"
+    },
+    {
+      "id": 5,
+      "status": "done",
+      "percent": 100,
+      "now": "",
+      "updated": "2026-11-19T14:40:00-05:00",
+      "doneAt": "2026-11-19T14:40:00-05:00"
+    },
+    {
+      "id": 6,
+      "status": "done",
+      "percent": 100,
+      "now": "",
+      "updated": "2026-11-20T14:24:00-05:00",
+      "doneAt": "2026-11-20T14:24:00-05:00"
+    },
+    {
+      "id": 7,
+      "status": "done",
+      "percent": 100,
+      "now": "",
+      "updated": "2026-11-19T14:40:00-05:00",
+      "doneAt": "2026-11-19T14:40:00-05:00"
+    },
+    {
+      "id": 8,
+      "status": "progress",
+      "percent": 20,
+      "now": "Picked fresh photos from your Drive; swapping them in next",
+      "updated": "2026-11-20T14:31:00-05:00"
+    },
+    {
+      "id": 9,
+      "status": "progress",
+      "percent": 20,
+      "now": "Gathered the stories from your memos; adding the ones cleared to share",
+      "updated": "2026-11-20T14:31:00-05:00"
+    },
+    {
+      "id": 10,
+      "status": "progress",
+      "percent": 5,
+      "now": "Queued after the photos",
+      "updated": "2026-11-20T14:31:00-05:00",
+      "stage": "queued"
+    }
   ],
   "extra": [
-    { "id": "ai", "status": "jim", "now": "Jim will reach out", "updated": "2026-11-20T14:31:00-05:00" }
+    {
+      "id": "ai",
+      "status": "jim",
+      "now": "Jim will reach out",
+      "updated": "2026-11-20T14:31:00-05:00"
+    }
   ]
 }
