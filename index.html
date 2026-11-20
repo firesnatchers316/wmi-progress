@@ -471,6 +471,7 @@ footer .verse{font-family:var(--mono);font-size:12px}
 .wp-name{flex:1;min-width:0;font-size:16px;font-weight:600;line-height:1.35;color:#F3F5F8}
 .wp-name small{display:block;font-weight:400;font-size:14px;line-height:1.45;color:#9FB0C8;margin-top:3px}
 .wp-st{flex:none;font-size:13px;font-weight:600;text-align:right;line-height:1.35;max-width:42%}
+.wp-tag{margin:6px 0 0 26px;display:inline-block;font:500 11px/1.3 var(--mono);letter-spacing:.04em;color:#0B1A2E;background:#22D3EE;border-radius:99px;padding:4px 9px}
 .wp-desc{margin:4px 0 0 26px;font-size:14px;line-height:1.45;color:#9FB0C8}
 .wp-body{margin:9px 0 0 26px;display:grid;gap:6px}
 .wp-mini{height:6px;border-radius:3px;background:#0A1424;overflow:hidden}
@@ -525,6 +526,7 @@ footer .verse{font-family:var(--mono);font-size:12px}
   .ba-row{grid-template-columns:.9fr 1.1fr 1.8fr;gap:18px;align-items:start}
   .ba .lab{display:none}
 }
+.hb-got{margin:0 0 12px;font:500 13px/1.4 var(--mono);color:#1B6E35;background:#E3F4E8;border-radius:4px;padding:7px 10px}
 .sw{text-transform:none;font-variant:small-caps;letter-spacing:.02em}
 .pmode{background:var(--light);color:var(--blue);font:500 12px/1.4 var(--mono);text-align:center;padding:8px 12px;letter-spacing:.04em}
   </style>
@@ -610,14 +612,14 @@ footer .verse{font-family:var(--mono);font-size:12px}
         <div class="wp-card">
           <div class="wp-live"><span class="wp-livedot" aria-hidden="true"></span><span id="wpLive">Live</span></div>
           <div class="wp-overall">
-            <span class="wp-olabel">Overall · <b id="wpN">3 of 10 done</b></span>
+            <span class="wp-olabel">Overall · <b id="wpN"></b></span>
             <span class="wp-pct" id="wpPct">48%</span>
           </div>
           <div class="wp-barwrap" aria-hidden="true"><div class="wp-track"><div class="wp-fill" id="wpBar"></div></div></div>
         </div>
         <div class="wp-card">
-          <div class="wp-label">YOUR 10 POINTS</div>
-          <ol class="wp-list" id="wpList" aria-label="Your 10 points and where each one stands"></ol>
+          <div class="wp-label" id="wpCount">YOUR POINTS</div>
+          <ol class="wp-list" id="wpList" aria-label="Your points and where each one stands"></ol>
         </div>
         <div class="wp-grid">
           <div class="wp-card"><div class="wp-label green">RECENTLY FINISHED</div><div id="wpFinished"></div></div>
@@ -628,6 +630,7 @@ footer .verse{font-family:var(--mono);font-size:12px}
     <div class="hb" id="hbForm">
       <div class="hb-box">
         <div>
+          <p class="hb-got">✓ Got your note at 3:01 PM. It's point 11 in the list.</p>
           <p class="eb">Your turn</p>
           <h2>Talk to us here</h2>
           <p class="lead">Jim sees your message right away, and you'll hear back fast. Fix anything we got wrong, or add something new.</p>
@@ -698,7 +701,7 @@ footer .verse{font-family:var(--mono);font-size:12px}
       <div class="ba-row">
         <div class="ba-t">Nothing gets lost</div>
         <div class="ba-old"><span class="lab">The usual way</span>Rounds of email feedback, and you keep track of the changes yourself.</div>
-        <div class="ba-new"><span class="lab">What happened here</span>Nov 19, 12:10 PM ET: your one voice memo became 10 clear points. Each one has a live status at the top of this page.</div>
+        <div class="ba-new"><span class="lab">What happened here</span>Nov 19, 12:10 PM ET: your one voice memo became 10 clear points. Each one has a live status at the top of this page. Nov 20, 3:01 PM ET: your follow-up reply about fonts became point 11 within minutes.</div>
       </div>
       <div class="ba-row">
         <div class="ba-t">A site that says what you do</div>
@@ -765,7 +768,8 @@ footer .verse{font-family:var(--mono);font-size:12px}
       { id: 7, title: "Contact email in the footer", text: "Put the contact email in the footer for people who'd rather email than fill in a form.", status: "done", percent: 100, now: "", updated: "2026-11-19T14:40:00-05:00", doneAt: "2026-11-19T14:40:00-05:00" },
       { id: 8, title: "Photo variety", text: "More variety in the photos: the crowds and the numbers, and also \"the one.\" For example, Marat speaking on the Serve page.", status: "progress", percent: 20, now: "Picked fresh photos from your Drive; swapping them in next", updated: "2026-11-20T14:31:00-05:00" },
       { id: 9, title: "Testimonies", text: "Add the testimonies: stories and photos of individual people from your memos and Drive, for example on Global Work.", status: "progress", percent: 20, now: "Gathered the stories from your memos; adding the ones cleared to share", updated: "2026-11-20T14:31:00-05:00" },
-      { id: 10, title: "Phone first screen and carousel", text: "Make the first phone screen show what WMI does right away, with a sliding photo carousel and tappable Invite, Give and Pray cards.", status: "progress", stage: "queued", percent: 5, now: "Queued after the photos", updated: "2026-11-20T14:31:00-05:00" }
+      { id: 10, title: "Phone first screen and carousel", text: "Make the first phone screen show what WMI does right away, with a sliding photo carousel and tappable Invite, Give and Pray cards.", status: "progress", stage: "queued", percent: 5, now: "Queued after the photos", updated: "2026-11-20T14:31:00-05:00" },
+      { id: 11, title: "Fonts that match and are easy to read", tag: "From your reply, Nov 20, 3:01 PM", text: "Some fonts look out of place and some text is barely visible. Every font should match across the site.", status: "progress", stage: "next", percent: 0, now: "Queued right after the phone checks", updated: "2026-11-20T15:02:56-05:00" }
     ];
     const HEARD_EXTRA = [
       { id: "ai", text: "You'd like to talk with Jim about AI tools, like SuperWho, for the ministry.", status: "jim", now: "Jim will reach out", updated: "2026-11-20T14:31:00-05:00" }
@@ -1006,6 +1010,7 @@ const canRecord = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMed
       : ph === 'next' ? 'Up next' : ph === 'queued' ? 'Queued' : (HEARD_LABEL[it.status] || it.status);
     const st = el('span', 'wp-st', label); st.style.color = C[ph];
     head.appendChild(dot); head.appendChild(name); head.appendChild(st); li.appendChild(head);
+    if (it.tag) li.appendChild(el('p', 'wp-tag', it.tag));
     if (it.title) li.appendChild(el('p', 'wp-desc', it.text));
     if (ph === 'done') return li;
     const body = el('div', 'wp-body');
@@ -1025,6 +1030,7 @@ const canRecord = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMed
     const nDone = items.filter(it => it.status === 'done').length;
     const avg = clamp(items.reduce((a, it) => a + pctOf(it), 0) / (items.length || 1));
     $('wpN').textContent = nDone + ' of ' + items.length + ' done';
+    $('wpCount').textContent = 'YOUR ' + items.length + ' POINTS';
     $('wpPct').textContent = avg + '%';
     requestAnimationFrame(() => { $('wpBar').style.width = Math.max(avg, 2) + '%'; });
     const latest = [updatedAt].concat(items.map(i => i.updated), extra.map(i => i.updated)).filter(Boolean).map(x => new Date(x)).filter(d => !isNaN(d)).sort((a, b) => b - a)[0];
@@ -1046,6 +1052,8 @@ const canRecord = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMed
       const j = await r.json();
       const byId = {}; (j.items || []).forEach(x => { byId[String(x.id)] = x; });
       items = HEARD.map(base => Object.assign({}, base, byId[String(base.id)] || {}, { text: (byId[String(base.id)] || {}).text || base.text }));
+      const known = new Set(HEARD.map(b => String(b.id)));
+      (j.items || []).forEach(x => { if (!known.has(String(x.id)) && x.text) items.push(Object.assign({}, x)); }); // new points added only in the JSON
       const exById = {}; (j.extra || []).forEach(x => { exById[String(x.id)] = x; });
       extra = HEARD_EXTRA.map(base => Object.assign({}, base, exById[String(base.id)] || {}, { text: (exById[String(base.id)] || {}).text || base.text }));
       if (j.updated) updatedAt = j.updated;
