@@ -1,19 +1,19 @@
 {
-  "updated": "2026-11-20T14:31:00-05:00",
+  "updated": "2026-11-20T14:43:48-05:00",
   "items": [
     {
       "id": 1,
       "status": "progress",
-      "percent": 80,
-      "now": "Home links done; checking every other page and the phone menu",
-      "updated": "2026-11-20T14:31:00-05:00"
+      "percent": 95,
+      "now": "All Home buttons now link to the right pages; checking one last link",
+      "updated": "2026-11-20T14:43:48-05:00"
     },
     {
       "id": 2,
       "status": "progress",
-      "percent": 40,
-      "now": "Phone footer logo fixed; clearing stray dots and lining up text on the other pages",
-      "updated": "2026-11-20T14:31:00-05:00"
+      "percent": 50,
+      "now": "Removed stray dots on Global Work; checking the other pages and phone menu next",
+      "updated": "2026-11-20T14:43:48-05:00"
     },
     {
       "id": 3,
