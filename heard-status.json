@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20T15:05:10-05:00",
+  "updated": "2026-11-20T16:45:26-05:00",
   "items": [
     {
       "id": 1,
@@ -12,9 +12,9 @@
     {
       "id": 2,
       "status": "progress",
-      "percent": 80,
-      "now": "Menu, dots and computer alignment done; phone layout and font pass next",
-      "updated": "2026-11-20T15:05:06-05:00"
+      "percent": 85,
+      "now": "Phone overlaps fixed on Statement of Faith and Pray; About timeline spacing and phone margins next",
+      "updated": "2026-11-20T16:45:26-05:00"
     },
     {
       "id": 3,
@@ -83,9 +83,9 @@
       "tag": "From your reply, Nov 20, 3:01 PM",
       "text": "Some fonts look out of place and some text is barely visible. Every font should match across the site.",
       "status": "progress",
-      "percent": 10,
-      "now": "Checking every page for mismatched or hard-to-read text",
-      "updated": "2026-11-20T15:05:10-05:00"
+      "percent": 40,
+      "now": "Live: menu font matched, Mission quote readable, bigger labels, phone overlaps fixed on 2 pages. Next: About on phones and card fonts",
+      "updated": "2026-11-20T16:45:26-05:00"
     }
   ],
   "extra": [
