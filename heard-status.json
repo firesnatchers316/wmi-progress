@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20T19:21:36-05:00",
+  "updated": "2026-11-20T19:48:16-05:00",
   "items": [
     {
       "id": 1,
@@ -11,10 +11,11 @@
     },
     {
       "id": 2,
-      "status": "progress",
-      "percent": 90,
-      "now": "Live: phone overlaps and margins fixed on Statement of Faith, Pray, About and Global Work. Next: final phone check of every page",
-      "updated": "2026-11-20T19:21:36-05:00"
+      "status": "done",
+      "percent": 100,
+      "now": "Checked every page on a phone and fixed the four glitches found.",
+      "updated": "2026-11-20T19:48:16-05:00",
+      "doneAt": "2026-11-20T19:48:16-05:00"
     },
     {
       "id": 3,
