@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20T18:56:24-05:00",
+  "updated": "2026-11-20T19:21:36-05:00",
   "items": [
     {
       "id": 1,
@@ -12,9 +12,9 @@
     {
       "id": 2,
       "status": "progress",
-      "percent": 85,
-      "now": "Phone overlaps fixed on Statement of Faith and Pray; About timeline spacing and phone margins next",
-      "updated": "2026-11-20T16:45:26-05:00"
+      "percent": 90,
+      "now": "Live: phone overlaps and margins fixed on Statement of Faith, Pray, About and Global Work. Next: final phone check of every page",
+      "updated": "2026-11-20T19:21:36-05:00"
     },
     {
       "id": 3,
@@ -81,10 +81,11 @@
       "title": "Fonts that match and are easy to read",
       "tag": "From your reply, Nov 20, 3:01 PM",
       "text": "Some fonts look out of place and some text is barely visible. Every font should match across the site.",
-      "status": "progress",
-      "percent": 75,
-      "now": "Live: card titles, captions and buttons now in the site font on Get Involved, About, Global Work and Mission. Next: Global Work phone margin and footer width",
-      "updated": "2026-11-20T18:00:59-05:00"
+      "status": "done",
+      "percent": 100,
+      "now": "Done: all pages use the site fonts, labels readable, phone margins and footer fixed",
+      "updated": "2026-11-20T19:21:36-05:00",
+      "doneAt": "2026-11-20T19:21:36-05:00"
     }
   ],
   "extra": [
