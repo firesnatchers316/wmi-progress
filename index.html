@@ -547,6 +547,8 @@ footer .verse{font-family:var(--mono);font-size:12px}
 .pwa-steps{margin:0;padding-left:22px;color:#F3F5F8;font-size:15px;line-height:1.5}
 .pwa-steps li{margin:4px 0}
 .pwa .btn-o{background:transparent;color:#F3F5F8;border-color:#5B8CFF;margin-top:12px}
+.pwa{scroll-margin-top:16px}
+.pwa-jumpbar{padding:14px 0 0}
 .sw{text-transform:none;font-variant:small-caps;letter-spacing:.02em}
 .pmode{background:var(--light);color:var(--blue);font:500 12px/1.4 var(--mono);text-align:center;padding:8px 12px;letter-spacing:.04em}
   </style>
@@ -602,6 +604,12 @@ footer .verse{font-family:var(--mono);font-size:12px}
 
 <div class="newstrip" id="newstrip">
   <div class="wrap"><span class="newtag">New</span><span>We just realized you didn't have this reply feature yesterday. So sorry for the delay. That won't happen going forward. <a href="#update">See where things stand ↓</a></span></div>
+</div>
+
+<div class="pwa-jumpbar" id="pwaJumpBar" hidden>
+  <div class="wrap">
+    <button class="btn full" id="pwaJump" type="button">🔔 Get updates on your phone</button>
+  </div>
 </div>
 
 <main id="top">
@@ -1275,7 +1283,10 @@ const VAPID_PUBLIC_KEY = "BOE1HpDTr6-oOfy8VJJ2dRGk_0Wfe-kohWMjJ6XNnUUyFAPdK9SI88
   if (!isIOS && !isAndroid && !standalone) return;            // desktop: keep the card hidden
   card.hidden = false;
   const b64ToBytes = s => { const p = '='.repeat((4 - s.length % 4) % 4); const raw = atob((s + p).replace(/-/g, '+').replace(/_/g, '/')); return Uint8Array.from(raw, c => c.charCodeAt(0)); };
+  const jump = $('pwaJumpBar');
+  const hideJump = () => { if (jump) jump.hidden = true; };
   const showOn = () => {
+    hideJump();
     ['pwaOn', 'pwaHere'].forEach(id => { $(id).hidden = true; });
     ['pwaDone', 'pwaDone2'].forEach(id => { $(id).hidden = false; });
     $('pwaTitle').textContent = 'Updates are on';
@@ -1305,12 +1316,18 @@ const VAPID_PUBLIC_KEY = "BOE1HpDTr6-oOfy8VJJ2dRGk_0Wfe-kohWMjJ6XNnUUyFAPdK9SI88
   }
   $('pwaOn').addEventListener('click', () => turnOn($('pwaOn')));
   $('pwaHere').addEventListener('click', () => turnOn($('pwaHere')));
+  if ($('pwaJump')) {
+    $('pwaJump').addEventListener('click', () => { card.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  }
   if (standalone) {
+    hideJump();
     $('pwaApp').hidden = false;
     $('pwaTitle').textContent = 'Turn on updates';
   } else {
     $('pwaSteps').hidden = false;
+    if (isIOS) $('pwaTitle').textContent = 'Two quick steps first';
     if (isAndroid) { $('pwaSteps').insertBefore($('pwaAndroid'), $('pwaIos')); if (canPush) $('pwaHere').hidden = false; }
+    if (jump) jump.hidden = false;
   }
   if (canPush && navigator.serviceWorker) {
     navigator.serviceWorker.ready.then(reg => reg.pushManager.getSubscription()).then(sub => {
