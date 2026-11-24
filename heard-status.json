@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20T19:48:16-05:00",
+  "updated": "2026-11-24T07:48:00-05:00",
   "items": [
     {
       "id": 1,
@@ -87,6 +87,17 @@
       "now": "Done: all pages use the site fonts, labels readable, phone margins and footer fixed",
       "updated": "2026-11-20T19:21:36-05:00",
       "doneAt": "2026-11-20T19:21:36-05:00"
+    },
+    {
+      "id": 12,
+      "title": "Statement of Faith back to dropdowns",
+      "tag": "From your reply, Nov 21, 10:04 AM",
+      "text": "The Statement of Faith page changed format. Put the beliefs back into dropdowns, the way they were before.",
+      "status": "done",
+      "percent": 100,
+      "now": "Done: Statement of Faith is back to dropdowns. Tap any belief to open it.",
+      "updated": "2026-11-21T14:19:00-05:00",
+      "doneAt": "2026-11-21T14:19:00-05:00"
     }
   ],
   "extra": [
