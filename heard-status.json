@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-25T13:04:16-05:00",
+  "updated": "2026-11-25T15:30:27-05:00",
   "items": [
     {
       "id": 1,
@@ -19,17 +19,19 @@
     },
     {
       "id": 3,
-      "status": "gary",
-      "percent": 0,
-      "now": "Waiting on Gary's Zeffy setup and the list of giving funds",
-      "updated": "2026-11-20T14:31:00-05:00"
+      "status": "done",
+      "percent": 100,
+      "now": "Your stories, photos, giving page and form alerts are all live on the site.",
+      "updated": "2026-11-25T15:30:27-05:00",
+      "doneAt": "2026-11-25T15:30:27-05:00"
     },
     {
       "id": 4,
-      "status": "progress",
-      "percent": 85,
-      "now": "Live: Invite WMI, Pray and Contact forms, each emailed to info@ with an instant phone alert. Next: add zach@ as a recipient",
-      "updated": "2026-11-20T18:56:24-05:00"
+      "status": "done",
+      "percent": 100,
+      "now": "Your stories, photos, giving page and form alerts are all live on the site.",
+      "updated": "2026-11-25T15:30:27-05:00",
+      "doneAt": "2026-11-25T15:30:27-05:00"
     },
     {
       "id": 5,
@@ -64,10 +66,11 @@
     },
     {
       "id": 9,
-      "status": "progress",
-      "percent": 40,
-      "now": "Four more testimonies are cleared by first name and their cards are being drafted. Tanya's and Yarik's still need which person is Tanya and a few sentences of each story.",
-      "updated": "2026-11-25T13:04:16-05:00"
+      "status": "done",
+      "percent": 100,
+      "now": "Your stories, photos, giving page and form alerts are all live on the site.",
+      "updated": "2026-11-25T15:30:27-05:00",
+      "doneAt": "2026-11-25T15:30:27-05:00"
     },
     {
       "id": 10,
